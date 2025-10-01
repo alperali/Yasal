@@ -1,0 +1,21 @@
+/*
+ * Yasal, https://github.com/alperali/Yasal
+ * Telif Hakkı/Copyright A. Alper Atıcı. Her Hakkı Saklıdır.
+ * All Rights Reserved. This is not free software.
+ */
+
+:root {
+  --h5-fs: 1.25rem;  /* default */
+  --h6-fs: 1rem;   /* default */
+  --bölüm-bap-fs: 1.1875rem;
+  --ayırım-fasıl-fs: 1.1375rem;
+  --b1-fs: 1.1rem;
+}
+
+[data-bs-theme=light] {
+
+}
+
+[data-bs-theme=dark] {
+
+}
