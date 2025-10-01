@@ -1,0 +1,82 @@
+<!--
+ * Yasal, https://github.com/alperali/Yasal
+ * Telif Hakkı/Copyright A. Alper Atıcı. Her Hakkı Saklıdır.
+ * All Rights Reserved. This is not free software.
+ -->
+<svg viewBox="-2 -2 52 52" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <g id="layer1" fill="gray">
+    <path id="path1" fill="black"
+       d="m 18.544239,5.7711678 1.857248,-3.2168487 1.857249,3.2168488 z"
+       transform="matrix(0.4715771,0,0,1.0294772,14.379126,6.0808399)" />
+    <rect
+       id="rect2" fill="black"
+       width="1.752"
+       height="22.790697"
+       x="23.124001"
+       y="12.033654" />
+    <path
+       style="fill:none;stroke-width:0.924544" stroke="black"
+       id="path6"
+       d="m 37.972822,-10.309302 a 13.972822,2.0396543 0 0 1 -6.986411,1.7663921 13.972822,2.0396543 0 0 1 -13.972822,-10e-8 13.972822,2.0396543 0 0 1 -6.986411,-1.766392"
+       transform="scale(1,-1)" />
+    <path
+       style="fill:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="M 9.6730062,10.214557 5.568917,28.772177" stroke="black"
+       id="path7" />
+    <path
+       style="fill:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 37.462411,10.280404 -4.104089,18.55762" stroke="black"
+       id="path7-8" />
+    <path
+       style="fill:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 38.231818,10.274135 4.104089,18.55762" stroke="black"
+       id="path7-8-5" />
+    <path
+       style="fill:none;stroke-width:0.3;stroke-linecap:butt;stroke-linejoin:miter;stroke-dasharray:none;stroke-opacity:1"
+       d="m 10.353616,10.264149 4.104089,18.55762" stroke="black"
+       id="path7-8-5-1" />
+    <path
+       style="stroke-width:0.3;stroke-dasharray:none"
+       id="path8" stroke="black" fill="black"
+       d="m 16.654275,28.877321 a 6.6319704,3.4795539 0 0 1 -3.315985,3.013382 6.6319704,3.4795539 0 0 1 -6.6319708,0 6.6319704,3.4795539 0 0 1 -3.3159851,-3.013382 h 6.6319709 z" />
+    <path
+       style="stroke-width:0.3;stroke-dasharray:none"
+       id="path8-7" stroke="black" fill="black"
+       d="m 44.573792,28.945541 a 6.6319704,3.4795539 0 0 1 -3.315985,3.013383 6.6319704,3.4795539 0 0 1 -6.63197,-1e-6 6.6319704,3.4795539 0 0 1 -3.315985,-3.013382 h 6.63197 z" />
+    <rect
+       style="fill:none;stroke-width:0.3;stroke-dasharray:none"
+       id="rect8" stroke="black"
+       width="6.8104091"
+       height="0.20817845"
+       x="20.594795"
+       y="28.996283" />
+    <rect
+       style="fill:none;stroke-width:0.3;stroke-dasharray:none"
+       id="rect8-2" stroke="black"
+       width="6.8104091"
+       height="0.20817845"
+       x="20.594795"
+       y="34.944965" />
+    <rect
+       style="stroke-width:0.349097;stroke-dasharray:none"
+       id="rect9" stroke="black" fill="black"
+       width="11.559021"
+       height="4.7876191"
+       x="18.22049"
+       y="35.482761" />
+    <rect
+       style="stroke-width:0.3;stroke-dasharray:none"
+       id="rect10" stroke="black" fill="black"
+       width="27.758541"
+       height="0.63087595"
+       x="10.120729"
+       y="40.547287" />
+    <rect
+       style="stroke-width:0.3;stroke-dasharray:none"
+       id="rect11" stroke="black" fill="black"
+       width="3.5749636"
+       height="0.16823359"
+       x="22.212519"
+       y="31.50174" />
+  </g>
+</svg>
