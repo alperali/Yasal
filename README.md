@@ -1,6 +1,8 @@
 # Yasal
 
-Kanunların web tabanlı olarak modern ve pratik gösterimini sağlar.
+https://github.com/alperali/Yasal
+
+Kanunların web tabanlı olarak modern ve pratik gösterimini sağlayan bir çalışmadır.
 
 * Telefon, tablet, PC vs her ekran boyuna uygundur, yatay veya düşey ekran kullanılabilir.
 * Açık/Koyu tema seçimi vardır.
@@ -8,7 +10,7 @@ Kanunların web tabanlı olarak modern ve pratik gösterimini sağlar.
 * Türkçe yazım kurallarına uygun satır sonu otomatik heceleme yapar.
 * Favoriler listesi sağlar.
 
-## Özellikler
+## Teknik Özellikler
 
 HTML, CSS, Javascript, _web components_ kullanılmıştır.
 [Bootstrap](https://github.com/twbs/bootstrap) tanımlarından faydalanır.
