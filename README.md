@@ -1,6 +1,6 @@
 # Yasal
 
-https://github.com/alperali/Yasal
+https://alperali.github.io/Yasal
 
 Kanunların web tabanlı olarak modern ve pratik gösterimini sağlayan bir çalışmadır.
 
