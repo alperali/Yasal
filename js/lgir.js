@@ -16,3 +16,120 @@ let resp = await fetch('l.html');
 document.querySelector('main').insertAdjacentHTML('afterbegin', await resp.text());
 
 await import ('./gir.js');
+
+function proc_fav() {
+  if (this.checked && !favoriler.includes(this.dataset.no)) {
+    favoriler.push(this.dataset.no);
+    localStorage.setItem('favoriler', JSON.stringify(favoriler));
+    if (document.querySelector('#lst-başlık').checked)
+      document.querySelector('#tbfavoriler tbody').insertAdjacentHTML('beforeend',
+      `<tr data-no="${+this.dataset.no}">
+         <td><a href="./yasa.html?m=${+this.dataset.no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(+this.dataset.no).başlık}</a></td>
+         <td class="align-middle">${+this.dataset.no}</td>
+       </tr>`);
+    else
+      document.querySelector('#tbfavoriler tbody').insertAdjacentHTML('beforeend',
+      `<tr data-no="${+this.dataset.no}">
+         <td class="align-middle"><a href="./yasa.html?m=${+this.dataset.no}&inapp=1" class="${cls_sayı_sıralı}">${+this.dataset.no}</a></td>
+         <td>${belgeler.get(+this.dataset.no).başlık}</td>
+       </tr>`);
+  }
+  else if (!this.checked && favoriler.includes(this.dataset.no)) {
+    favoriler.splice(favoriler.indexOf(this.dataset.no), 1);
+    localStorage.setItem('favoriler', JSON.stringify(favoriler));
+    document.querySelector(`#tbfavoriler tr[data-no="${this.dataset.no}"]`).remove();
+  }
+}
+
+document.querySelector('#lst-başlık').addEventListener('change', () => {
+  let tbl = '';
+  başlık_sıralı
+          .forEach(no => tbl = tbl.concat(`<tr>
+    <td class="align-middle"><div class="form-check"><input class="form-check-input" type="checkbox" data-no="${no}"${favoriler.includes(no.toString()) ? ' checked':''}></div></td>
+    <td><a href="./yasa.html?m=${no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(no).başlık}</a></td>
+    <td class="align-middle">${no}</td>
+    </tr>`));
+  document.querySelector('#tbliste').replaceChildren();
+  document.querySelector('#tbliste').insertAdjacentHTML('afterbegin',
+    `<thead><tr><th scope="col">${yıldız}</th><th scope="col">Başlık</th><th scope="col">Sayı</th></tr></thead><tbody>${tbl}</tbody>`);
+  document.querySelectorAll('#tbliste input[type=checkbox]').forEach(e => e.addEventListener('change', proc_fav));
+  document.querySelector('#yatay-lst-başlık').checked = true;
+  fav_tab_işle();
+
+  localStorage.setItem('görünüm', 'başlık');
+  if (init)
+    init = false;
+  else
+    window.matchMedia('(orientation: portrait)').matches && document.querySelector('#tocbuton').click();
+
+  function fav_tab_işle() {
+    let tbl = '';
+    favoriler.sort((a,b) => belgeler.get(+a).başlık.localeCompare(belgeler.get(+b).başlık, 'tr', {sensitivity: 'base'}))
+             .forEach(no => tbl = tbl.concat(`<tr data-no="${+no}">
+      <td><a href="./yasa.html?m=${+no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(+no).başlık}</a></td>
+      <td class="align-middle">${+no}</td>
+      </tr>`));
+    document.querySelector('#tbfavoriler').replaceChildren();
+    document.querySelector('#tbfavoriler').insertAdjacentHTML('afterbegin',
+    `<thead><tr><th scope="col">Başlık</th><th scope="col">Sayı</th></tr></thead><tbody>${tbl}</tbody>`);
+  }
+});
+
+document.querySelector('#yatay-lst-başlık').addEventListener('change', () => {
+  document.querySelector('#lst-başlık').dispatchEvent(new Event('change'));
+  document.querySelector('#lst-başlık').checked = true;
+});
+
+document.querySelector('#lst-sayı').addEventListener('change', () => {
+  let tbl = '';
+  sayı_sıralı
+          .forEach(no => tbl = tbl.concat(`<tr>
+    <td class="align-middle"><div class="form-check"><input class="form-check-input" type="checkbox" data-no="${no}"${favoriler.includes(no.toString()) ? ' checked':''}></div></td>
+    <td class="align-middle"><a href="./yasa.html?m=${no}&inapp=1" class="${cls_sayı_sıralı}">${no}</a></td>
+    <td>${belgeler.get(+no).başlık}</td></tr>`));
+  document.querySelector('#tbliste').replaceChildren();
+  document.querySelector('#tbliste').insertAdjacentHTML('afterbegin',
+    `<thead><tr><th scope="col">${yıldız}</th><th scope="col">Sayı</th><th scope="col">Başlık</th></tr></thead><tbody>${tbl}</tbody>`);
+  document.querySelectorAll('#tbliste input[type=checkbox]').forEach(e => e.addEventListener('change', proc_fav));
+  document.querySelector('#yatay-lst-sayı').checked = true;
+  fav_tab_işle();
+
+  localStorage.setItem('görünüm', 'sayı');
+  if (init)
+    init = false;
+  else
+    window.matchMedia('(orientation: portrait)').matches && document.querySelector('#tocbuton').click();
+
+  function fav_tab_işle() {
+    let tbl = '';
+    favoriler.sort((a,b) => +a - +b)
+             .forEach(no => tbl = tbl.concat(`<tr data-no="${+no}">
+      <td class="align-middle"><a href="./yasa.html?m=${+no}&inapp=1" class="${cls_sayı_sıralı}">${+no}</a></td>
+      <td>${belgeler.get(+no).başlık}</td></tr>`));
+    document.querySelector('#tbfavoriler').replaceChildren();
+    document.querySelector('#tbfavoriler').insertAdjacentHTML('afterbegin',
+    `<thead><tr><th scope="col">Sayı</th><th scope="col">Başlık</th></tr></thead><tbody>${tbl}</tbody>`);
+  }
+});
+
+document.querySelector('#yatay-lst-sayı').addEventListener('change', () => {
+  document.querySelector('#lst-sayı').dispatchEvent(new Event('change'));
+  document.querySelector('#lst-sayı').checked = true;
+});
+
+document.querySelector('#favoriler-tab').addEventListener('click', () => sessionStorage.setItem('tabfav', true));
+document.querySelector('#tamliste-tab').addEventListener('click', () => sessionStorage.setItem('tabfav', false));
+
+const görün = localStorage.getItem('görünüm');
+let init = true;
+if (!görün) {
+  document.querySelector('#yatay-lst-başlık').dispatchEvent(new Event('change'));
+}
+else if (görün == 'başlık')
+  document.querySelector('#yatay-lst-başlık').dispatchEvent(new Event('change'));
+else {
+  document.querySelector('#yatay-lst-sayı').dispatchEvent(new Event('change'));
+}
+
+if (JSON.parse(sessionStorage.getItem('tabfav')))
+  document.querySelector('#favoriler-tab').click();

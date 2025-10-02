@@ -13,9 +13,166 @@
 }
 
 [data-bs-theme=light] {
-
+  --inaktif-ytipi-renk: lightgray;
+  --bg-renk-kitap: #8db0f2;
+  --bg-renk-kısım: gainsboro;
+  --bg-renk-bölüm-bap: #ceebfd;
+  --bg-renk-ayırım-fasıl: cornsilk;
+  --bg-renk-b1: #fde8ec;
+  --bg-renk-b2: #d6f5d6;
+  --bg-renk-b3: #e6f2ff;
+  --bg-renk-b4: #e7e5ca;
+  --renk-madde-başlık: darkgreen;
+  --renk-fıkra-no: mediumblue;
+  --renk-bent-no: maroon;
 }
 
 [data-bs-theme=dark] {
+  --inaktif-ytipi-renk: dimgray;
+  --bg-renk-kitap: #004d66;
+  --bg-renk-kısım: #4d4d4d;
+  --bg-renk-bölüm-bap: #372f6a;
+  --bg-renk-ayırım-fasıl: #4d3d00;
+  --bg-renk-b1: #460713;
+  --bg-renk-b2: #0f3e0f;
+  --bg-renk-b3: #00264d;
+  --bg-renk-b4: #464420;
+  --renk-madde-başlık: #ccffcc;
+  --renk-fıkra-no: #0099cc;
+  --renk-bent-no: #ffdacc;
+}
+.h5 {
+  font-size: var(--h5-fs);
+}
+.h6 {
+  font-size: var(--h6-fs);
+}
+.stil-kitap {
+  background-color: var(--bg-renk-kitap);
+}
+.toc-stil-kitap {
+  background-color: var(--bg-renk-kitap);
+}
+.stil-kısım {
+  background-color: var(--bg-renk-kısım);
+}
+.toc-stil-kısım {
+  background-color: var(--bg-renk-kısım);
+}
+.stil-bölüm-bap {
+  background-color: var(--bg-renk-bölüm-bap);
+}
+.bölüm-bap-fs {
+  font-size: var(--bölüm-bap-fs) !important;
+}
+.toc-stil-bölüm-bap {
+  background-color: var(--bg-renk-bölüm-bap);
+}
+.stil-ayırım-fasıl {
+  background-color: var(--bg-renk-ayırım-fasıl);
+}
+.ayırım-fasıl-fs {
+  font-size: var(--ayırım-fasıl-fs) !important;
+}
+.toc-stil-ayırım-fasıl {
+  background-color: var(--bg-renk-ayırım-fasıl);
+}
+.stil-b1 {
+  background-color: var(--bg-renk-b1);
+  font-size: var(--b1-fs) !important;
+}
+.toc-stil-b1 {
+  background-color: var(--bg-renk-b1);
+}
+.stil-b2 {
+  background-color: var(--bg-renk-b2);
+}
+.toc-stil-b2 {
+  background-color: var(--bg-renk-b2);
+}
+.stil-b3 {
+  background-color: var(--bg-renk-b3);
+}
+.toc-stil-b3 {
+  background-color: var(--bg-renk-b3);
+}
+.stil-b4 {
+  background-color: var(--bg-renk-b4);
+}
+.toc-stil-b4 {
+  background-color: var(--bg-renk-b4);
+}
+.stil-madde-başlık {
+  color: var(--renk-madde-başlık);
+}
+.stil-fıkra-no {
+  color: var(--renk-fıkra-no);
+}
+.stil-bent-no {
+  color: var(--renk-bent-no);
+}
+.offcanvas, .offcanvas-xxl, .offcanvas-xl, .offcanvas-lg, .offcanvas-md, .offcanvas-sm {
+  --bs-offcanvas-width: max(13.75rem, 36vw); /* 400px; */
+  --bs-offcanvas-padding-x: 0.5rem;       /* 1rem; */
+  --bs-offcanvas-padding-y: 0.5rem;       /* 1rem; */
+}
+.list-group {
+  --bs-list-group-item-padding-x: 0.33rem; /* 1rem; */
+}
+.list-group-item-action {
+  width: auto;
+}
+.pt-016 {
+  padding-top: 0.16rem;
+}
+.px-075 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.altta {
+  bottom: 0;
+}
+#çubuk {
+  z-index: 2;
+}
+.inaktif-ytipi {
+  fill: var(--inaktif-ytipi-renk);
+}
+.hcl, .hcl2 {
+  hyphens: manual;
+}
+.ytiçndk {
+  display: none;
+}
+.üst-kaydır {
+  margin-top: 3rem;
+  padding-top: 0.5rem;
+}
+.alt-kaydır {
+  margin-bottom: 3rem;
+  padding-bottom: 0.5rem;
+}
 
+@media screen and (orientation: landscape) {
+  .ytgizle {
+    display: none;
+  }
+  .ytiçndk {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  .ytyasa {
+    height: 100vh;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  .üst-kaydır {
+    margin-top: revert;
+    padding-top: revert;
+  }
+  .alt-kaydır {
+    margin-bottom: revert;
+    padding-bottom: revert;
+  }
 }
