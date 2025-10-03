@@ -6,7 +6,7 @@ Kanunların web tabanlı olarak modern ve pratik gösterimini sağlayan bir çal
 
 * Telefon, tablet, PC vs her ekran boyuna uygundur, yatay veya düşey ekran kullanılabilir.
 * Açık/Koyu tema seçimi vardır.
-* İçindekiler tablosu oluşturur.
+* İçindekiler ve maddeler tablosu oluşturur (her iki tablo kullanıcı ile etkileşimlidir).
 * Türkçe yazım kurallarına uygun satır sonu otomatik heceleme yapar.
 * Favoriler listesi sağlar.
 
