@@ -1,0 +1,460 @@
+<!-- 
+  Yasal, https://github.com/alperali/Yasal
+  
+  İşbu belge 5846 sayılı kanun madde 31'e dayanarak oluşturulmuş işlenme eserdir.
+  
+  Telif Hakkı/Copyright A. Alper Atıcı. Her Hakkı Saklıdır.
+  All Rights Reserved. This is not free software.  -->
+
+  <mvz-künye tür="kanun" no="5070" başlık="ELEKTRONİK İMZA KANUNU"
+             tarih="15/1/2004" rgazete-tarih="23/1/2004 " rgazete-sayı="25355"
+             düstur-tertip="5" düstur-cilt="43" />
+    
+  <mvz-kısım no="1-BİRİNCİ" başlık="Amaç, Kapsam ve Tanımlar">
+    <mvz-madde no="1" başlık="Amaç">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunun amacı, elektronik imzanın hukukî ve teknik yönleri ile kullanımına ilişkin esasları düzenlemektir.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="2" başlık="Kapsam">
+      <mvz-fıkra no="1">
+        <template>Bu Kanun, elektronik imzanın hukukî yapısını, elektronik sertifika hizmet sağlayıcılarının faaliyetlerini ve her alanda elektronik imzanın kullanımına ilişkin işlemleri kapsar.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="3" başlık="Tanımlar">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunda geçen;</template>
+        <mvz-bent no="a">
+          <template>Elektronik veri: Elektronik, optik veya benzeri yollarla üretilen, taşınan veya saklanan kayıtları,</template>
+        </mvz-bent>
+        <mvz-bent no="b">
+          <template>Elektronik imza: Başka bir elektronik veriye eklenen veya elektronik veriyle mantıksal bağlantısı bulunan ve kimlik doğrulama amacıyla kullanılan elektronik veriyi,</template>
+        </mvz-bent>
+        <mvz-bent no="c">
+          <template>İmza sahibi: Elektronik imza oluşturmak amacıyla bir imza oluşturma aracını kullanan gerçek kişiyi,</template>
+        </mvz-bent>
+        <mvz-bent no="d">
+          <template>İmza oluşturma verisi: İmza sahibine ait olan, imza sahibi tarafından elektronik imza oluşturma amacıyla kullanılan ve bir eşi daha olmayan şifreler, kriptografik gizli anahtarlar gibi verileri,</template>
+        </mvz-bent>
+        <mvz-bent no="e">
+          <template>İmza oluşturma aracı: Elektronik imza oluşturmak üzere, imza oluşturma verisini kullanan yazılım veya donanım aracını,</template>
+        </mvz-bent>
+        <mvz-bent no="f">
+          <template>İmza doğrulama verisi: Elektronik imzayı doğrulamak için kullanılan şifreler, kriptografik açık anahtarlar gibi verileri,</template>
+        </mvz-bent>
+        <mvz-bent no="g">
+          <template>İmza doğrulama aracı: Elektronik imzayı doğrulamak amacıyla imza doğrulama verisini kullanan yazılım veya donanım aracını,</template>
+        </mvz-bent>
+        <mvz-bent no="h">
+          <template>Zaman damgası: Bir elektronik verinin, üretildiği, değiştirildiği, gönderildiği, alındığı ve / veya kaydedildiği zamanın tespit edilmesi amacıyla, elektronik sertifika hizmet sağlayıcısı tarafından elektronik imzayla doğrulanan kaydı,</template>
+        </mvz-bent>
+        <mvz-bent no="ı">
+          <template>Elektronik sertifika: İmza sahibinin imza doğrulama verisini ve kimlik bilgilerini birbirine bağlayan elektronik kaydı,</template>
+        </mvz-bent>
+        <mvz-bent no="j">
+          <template>Kurum: Telekomünikasyon Kurumunu,</template>
+        </mvz-bent>
+      </mvz-fıkra>
+      <mvz-fıkra no="0">
+        <template>ifade eder.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+  </mvz-kısım>
+  <mvz-kısım no="2-İKİNCİ" başlık="Güvenli Elektronik İmza ve Sertifika Hizmetleri">
+    <mvz-bölüm no="1-BİRİNCİ" başlık="Güvenli Elektronik İmza, Güvenli Elektronik İmza Oluşturma ve Doğrulama Araçları">
+      <mvz-madde no="4" başlık="Güvenli elektronik imza">
+        <mvz-fıkra no="1">
+          <template>Güvenli elektronik imza;</template>
+          <mvz-bent no="a">
+            <template>Münhasıran imza sahibine bağlı olan,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Sadece imza sahibinin tasarrufunda bulunan güvenli elektronik imza oluşturma aracı ile oluşturulan,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Nitelikli elektronik sertifikaya dayanarak imza sahibinin kimliğinin tespitini sağlayan,</template>
+          </mvz-bent>
+          <mvz-bent no="d">
+            <template>İmzalanmış elektronik veride sonradan herhangi bir değişiklik yapılıp yapılmadığının tespitini sağlayan,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>elektronik imzadır.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="5" başlık="Güvenli elektronik imzanın hukukî sonucu ve uygulama alanı">
+        <mvz-fıkra no="1">
+          <template>Güvenli elektronik imza, elle atılan imza ile aynı hukukî sonucu doğurur.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Kanunların resmî şekle veya özel bir merasime tabi tuttuğu hukukî işlemler ile banka teminat mektupları ve Türkiye’de yerleşik sigorta şirketleri tarafından düzenlenen kefalet senetleri dışındaki teminat sözleşmeleri, güvenli elektronik imza ile gerçekleştirilemez.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="6" başlık="Güvenli elektronik imza oluşturma araçları">
+        <mvz-fıkra no="1">
+          <template>Güvenli elektronik imza oluşturma araçları;</template>
+          <mvz-bent no="a">
+            <template>Ürettiği elektronik imza oluşturma verilerinin kendi aralarında bir eşi daha bulunmamasını,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Üzerinde kayıtlı olan elektronik imza oluşturma verilerinin araç dışına hiçbir biçimde çıkarılamamasını ve gizliliğini,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Üzerinde kayıtlı olan elektronik imza oluşturma verilerinin, üçüncü kişilerce elde edilememesini, kullanılamamasını ve elektronik imzanın sahteciliğe karşı korunmasını,</template>
+          </mvz-bent>
+          <mvz-bent no="d">
+            <template>İmzalanacak verinin imza sahibi dışında değiştirilememesini ve bu verinin imza sahibi tarafından imzanın oluşturulmasından önce görülebilmesini,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>sağlayan imza oluşturma araçlarıdır.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="7" başlık="Güvenli elektronik imza doğrulama araçları">
+        <mvz-fıkra no="1">
+          <template>Güvenli elektronik imza doğrulama araçları;</template>
+          <mvz-bent no="a">
+            <template>İmzanın doğrulanması için kullanılan verileri, değiştirmeksizin doğrulama yapan kişiye gösteren,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>İmza doğrulama işlemini güvenilir ve kesin bir biçimde çalıştıran ve doğrulama sonuçlarını değiştirmeksizin doğrulama yapan kişiye gösteren,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Gerektiğinde, imzalanmış verinin güvenilir bir biçimde gösterilmesini sağlayan,</template>
+          </mvz-bent>
+          <mvz-bent no="d">
+            <template>İmzanın doğrulanması için kullanılan elektronik sertifikanın doğruluğunu ve geçerliliğini güvenilir bir biçimde tespit ederek sonuçlarını değiştirmeksizin doğrulama yapan kişiye gösteren,</template>
+          </mvz-bent>
+          <mvz-bent no="e">
+            <template>İmza sahibinin kimliğini değiştirmeksizin doğrulama yapan kişiye gösteren,</template>
+          </mvz-bent>
+          <mvz-bent no="f">
+            <template>İmzanın doğrulanması ile ilgili şartlara etki edecek değişikliklerin tespit edilebilmesini sağlayan,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>imza doğrulama araçlarıdır.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+    </mvz-bölüm>
+    <mvz-bölüm no="2-İKİNCİ" başlık="Elektronik Sertifika Hizmet Sağlayıcısı, Nitelikli Elektronik Sertifika ve Yabancı Elektronik Sertifikalar">
+      <mvz-madde no="8" başlık="Elektronik sertifika hizmet sağlayıcısı">
+        <mvz-fıkra no="1">
+          <template>Elektronik sertifika hizmet sağlayıcısı, elektronik sertifika, zaman damgası ve elektronik imzalarla ilgili hizmetleri sağlayan kamu kurum ve kuruluşları ile gerçek veya özel hukuk tüzel kişilerdir. Elektronik sertifika hizmet sağlayıcısı, Kuruma yapacağı bildirimden iki ay sonra faaliyete geçer.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Elektronik sertifika hizmet sağlayıcısı yapacağı bildirimde;</template>
+          <mvz-bent no="a">
+            <template>Güvenli ürün ve sistemleri kullanmak,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Hizmeti güvenilir bir biçimde yürütmek,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Sertifikaların taklit ve tahrif edilmesini önlemekle ilgili her türlü tedbiri almak,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>ile ilgili şartları sağladığını ayrıntılı bir biçimde gösterir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="3">
+          <template>Kurum, yukarıdaki şartlardan birinin eksikliğini veya yerine getirilmediğini tespit ederse, bu eksikliklerin giderilmesi için, elektronik sertifika hizmet sağlayıcısına bir ayı geçmemek üzere bir süre verir, bu süre içinde elektronik sertifika hizmet sağlayıcısının faaliyetlerini durdurur. Sürenin sonunda eksikliklerin giderilmemesi halinde elektronik sertifika hizmet sağlayıcısının faaliyetine son verir. Kurumun bu kararlarına karşı 19 uncu maddenin ikinci fıkrası hükümleri gereğince itiraz edilebilir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="4">
+          <template>Elektronik sertifika hizmet sağlayıcılarının faaliyetlerinin devamı sırasında bu maddede gösterilen şartları kaybetmeleri hâlinde de yukarıdaki fıkra hükümleri uygulanır.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="5">
+          <template>Elektronik sertifika hizmet sağlayıcıları, Kurumun belirleyeceği ücret alt ve üst sınırlarına uymak zorundadır.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="9" başlık="Nitelikli elektronik sertifika">
+        <mvz-fıkra no="1">
+          <template>Nitelikli elektronik sertifikada;</template>
+          <mvz-bent no="a">
+            <template>Sertifikanın "nitelikli elektronik sertifika" olduğuna dair bir ibarenin,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Sertifika hizmet sağlayıcısının kimlik bilgileri ve kurulduğu ülke adının,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>İmza sahibinin teşhis edilebileceği kimlik bilgilerinin,</template>
+          </mvz-bent>
+          <mvz-bent no="d">
+            <template>Elektronik imza oluşturma verisine karşılık gelen imza doğrulama verisinin,</template>
+          </mvz-bent>
+          <mvz-bent no="e">
+            <template>Sertifikanın geçerlilik süresinin başlangıç ve bitiş tarihlerinin,</template>
+          </mvz-bent>
+          <mvz-bent no="f">
+            <template>Sertifikanın seri numarasının,</template>
+          </mvz-bent>
+          <mvz-bent no="g">
+            <template>Sertifika sahibi diğer bir kişi adına hareket ediyorsa bu yetkisine ilişkin bilginin,</template>
+          </mvz-bent>
+          <mvz-bent no="h">
+            <template>Sertifika sahibi talep ederse meslekî veya diğer kişisel bilgilerinin,</template>
+          </mvz-bent>
+          <mvz-bent no="ı">
+            <template>Varsa sertifikanın kullanım şartları ve kullanılacağı işlemlerdeki maddî sınırlamalara ilişkin bilgilerin,</template>
+          </mvz-bent>
+          <mvz-bent no="j">
+            <template>Sertifika hizmet sağlayıcısının sertifikada yer alan bilgileri doğrulayan güvenli elektronik imzasının,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>bulunması zorunludur.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="10" başlık="Elektronik sertifika hizmet sağlayıcısının yükümlülükleri">
+        <mvz-fıkra no="1">
+          <template>Elektronik sertifika hizmet sağlayıcısı;</template>
+          <mvz-bent no="a">
+            <template>Hizmetin gerektirdiği nitelikte personel istihdam etmekle,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Nitelikli sertifika verdiği kişilerin kimliğini resmî belgelere göre veya Türkiye Cumhuriyeti kimlik kartı vasıtasıyla uzaktan güvenilir bir biçimde tespit etmekle,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Sertifika sahibinin diğer bir kişi adına hareket edebilme yetkisi, meslekî veya diğer kişisel bilgilerinin sertifikada bulunması durumunda, bu bilgileri de resmî belgelere dayandırarak güvenilir bir biçimde belirlemekle,</template>
+          </mvz-bent>
+          <mvz-bent no="d">
+            <template>İmza oluşturma verisinin sertifika hizmet sağlayıcısı tarafından veya sertifika talep eden kişi tarafından sertifika hizmet sağlayıcısına ait yerlerde üretilmesi durumunda bu işlemin gizliliğini sağlamak veya sertifika hizmet sağlayıcısının sağladığı araçlarla üretilmesi durumunda, bu işleyişin güvenliğini sağlamakla,</template>
+          </mvz-bent>
+          <mvz-bent no="e">
+            <template>Kanunlarda öngörülen sınırlamalar saklı kalmak üzere sertifikanın kullanımına ilişkin özellikler, uyuşmazlıkların çözüm yolları ile ilgili şartlar ve güvenli elektronik imzanın elle atılan imza ile eşdeğer olduğu hakkında talep eden kişiyi sertifikanın tesliminden önce bilgilendirmekle,</template>
+          </mvz-bent>
+          <mvz-bent no="f">
+            <template>Sertifikada bulunan imza doğrulama verisine karşılık gelen imza oluşturma verisini başkasına kullandırmaması konusunda, sertifika sahibini bilgilendirmekle,</template>
+          </mvz-bent>
+          <mvz-bent no="g">
+            <template>Yaptığı hizmetlere ilişkin tüm kayıtları yönetmelikle belirlenen süreyle saklamakla,</template>
+          </mvz-bent>
+          <mvz-bent no="h">
+            <template>Faaliyetine son vereceği tarihten en az üç ay önce durumu Kuruma ve elektronik sertifika sahibine bildirmekle,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>yükümlüdür.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Elektronik sertifika hizmet sağlayıcısı üretilen imza oluşturma verisinin bir kopyasını alamaz veya bu veriyi saklayamaz.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="3">
+          <template>Elektronik sertifika hizmet sağlayıcısı, nitelikli sertifika verdiği kişilerin kimlik bilgilerini Türkiye Cumhuriyeti kimlik kartı vasıtasıyla uzaktan güvenilir bir biçimde tespit etmiş ise nitelikli sertifikayı kimlik kartına uzaktan güvenilir bir biçimde yükleyebilir.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="11" başlık="Nitelikli elektronik sertifikaların iptal edilmesi">
+        <mvz-fıkra no="1">
+          <template>Elektronik sertifika hizmet sağlayıcısı;</template>
+          <mvz-bent no="a">
+            <template>Nitelikli elektronik sertifika sahibinin talebi,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Sağladığı nitelikli elektronik sertifikaya ilişkin veri tabanında bulunan bilgilerin sahteliğinin veya yanlışlığının ortaya çıkması veya bilgilerin değişmesi,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Nitelikli elektronik sertifika sahibinin fiil ehliyetinin sınırlandığının, iflâsının veya gaipliğinin ya da ölümünün öğrenilmesi,</template>
+          </mvz-bent>
+        </mvz-fıkra>
+        <mvz-fıkra no="0">
+          <template>Durumunda vermiş olduğu nitelikli elektronik sertifikaları derhâl iptal eder.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Elektronik sertifika hizmet sağlayıcısı, nitelikli elektronik sertifikaların iptal edildiği zamanın tam olarak tespit edilmesine imkân veren ve üçüncü kişilerin hızlı ve güvenli bir biçimde ulaşabileceği bir kayıt oluşturur.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="3">
+          <template>Elektronik sertifika hizmet sağlayıcısı, faaliyetine son vermesi ve vermiş olduğu nitelikli elektronik sertifikaların başka bir elektronik sertifika hizmet sağlayıcısı tarafından kullanımının sağlanamaması durumunda vermiş olduğu nitelikli elektronik sertifikaları derhâl iptal eder.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="4">
+          <template>Elektronik sertifika hizmet sağlayıcısının faaliyetine Kurum tarafından son verilmesi halinde Kurum, faaliyetine son verilen elektronik sertifika hizmet sağlayıcısının vermiş olduğu nitelikli elektronik sertifikaların başka bir elektronik sertifika hizmet sağlayıcısına devredilmesine karar verir ve durumu ilgililere duyurur.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="5">
+          <template>Elektronik sertifika hizmet sağlayıcısı geçmişe yönelik olarak nitelikli elektronik sertifika iptal edemez.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="12" başlık="Bilgilerin korunması">
+        <mvz-fıkra no="1">
+          <template>Elektronik sertifika hizmet sağlayıcısı;</template>
+          <mvz-bent no="a">
+            <template>Elektronik sertifika talep eden kişiden, elektronik sertifika vermek için gerekli bilgiler hariç bilgi talep edemez ve bu bilgileri kişinin rızası dışında elde edemez,</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Elektronik sertifika sahibinin izni olmaksızın sertifikayı üçüncü kişilerin ulaşabileceği ortamlarda bulunduramaz,</template>
+          </mvz-bent>
+          <mvz-bent no="c">
+            <template>Elektronik sertifika talep eden kişinin yazılı rızası olmaksızın üçüncü kişilerin kişisel verileri elde etmesini engeller. Bu bilgileri sertifika sahibinin onayı olmaksızın üçüncü kişilere iletemez ve başka amaçlarla kullanamaz.</template>
+          </mvz-bent>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="13" başlık="Hukukî sorumluluk">
+        <mvz-fıkra no="1">
+          <template>Elektronik sertifika hizmet sağlayıcısının, elektronik sertifika sahibine karşı sorumluluğu genel hükümlere tâbidir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Elektronik sertifika hizmet sağlayıcısı, bu Kanun veya bu Kanuna dayanılarak çıkarılan yönetmelik hükümlerinin ihlâli suretiyle üçüncü kişilere verdiği zararları tazminle yükümlüdür. Elektronik sertifika hizmet sağlayıcısı kusursuzluğunu ispat ettiği takdirde tazminat ödeme yükümlülüğü doğmaz.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="3">
+          <template>Elektronik sertifika hizmet sağlayıcısı, söz konusu yükümlülük ihlâlinin istihdam ettiği kişilerin davranışına dayanması hâlinde de zarardan sorumlu olup, elektronik sertifika hizmet sağlayıcısı, bu sorumluluğundan, Borçlar Kanununun 55 inci maddesinde öngörülen türden bir kurtuluş kanıtı getirerek kurtulamaz.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="4">
+          <template>Nitelikli elektronik sertifikanın içerdiği kullanım ve maddî kapsamına ilişkin sınırlamalar hariç olmak üzere, elektronik sertifika hizmet sağlayıcısının üçüncü kişilere ve nitelikli elektronik imza sahibine karşı sorumluluğunu ortadan kaldıran veya sınırlandıran her türlü şart geçersizdir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="5">
+          <template>Elektronik sertifika hizmet sağlayıcısı, bu Kanundan doğan yükümlülüklerini yerine getirmemesi sonucu doğan zararların karşılanması amacıyla sertifika malî sorumluluk sigortası yaptırmak zorundadır. Sigortaya ilişkin usul ve esaslar Hazine Müsteşarlığının görüşü alınarak Kurum tarafından çıkarılacak yönetmelikle belirlenir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="6">
+          <template>Bu maddede öngörülen sertifika malî sorumluluk sigortası Türkiye'de ilgili branşta çalışmaya yetkili olan sigorta şirketleri tarafından yapılır. Bu sigorta şirketleri sertifika malî sorumluluk sigortasını yapmakla yükümlüdürler. Bu yükümlülüğe uymayan sigorta şirketlerine Hazine Müsteşarlığınca sekizmilyar lira idarî para cezası verilir. Bu para cezasının tahsilinde ve cezaya itiraz usulünde 18 inci madde hükümleri uygulanır.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="7">
+          <template>Elektronik sertifika hizmet sağlayıcısı, nitelikli elektronik sertifikayı elektronik imza sahibine sigorta ettirerek teslim etmekle yükümlüdür.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+      <mvz-madde no="14" başlık="Yabancı elektronik sertifikalar">
+        <mvz-fıkra no="1">
+          <template>Yabancı bir ülkede kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından verilen elektronik sertifikaların hukukî sonuçları milletlerarası anlaşmalarla belirlenir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="2">
+          <template>Yabancı bir ülkede kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından verilen elektronik sertifikaların, Türkiye'de kurulu bir elektronik sertifika hizmet sağlayıcısı tarafından kabul edilmesi durumunda, bu elektronik sertifikalar nitelikli elektronik sertifika sayılır. Bu elektronik sertifikaların kullanılması sonucunda doğacak zararlardan, Türkiye'deki elektronik sertifika hizmet sağlayıcısı da sorumludur.</template>
+        </mvz-fıkra>
+      </mvz-madde>
+    </mvz-bölüm>
+  </mvz-kısım>
+  <mvz-kısım no="3-ÜÇÜNCÜ" başlık="Denetim ve Ceza Hükümleri">
+    <mvz-madde no="15" başlık="Denetim">
+      <mvz-fıkra no="1">
+        <template>Elektronik sertifika hizmet sağlayıcılarının bu Kanunun uygulanmasına ilişkin faaliyet ve işlemlerinin denetimi Kurumca yerine getirilir.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>Kurum, gerekli gördüğü zamanlarda elektronik sertifika hizmet sağlayıcılarını denetleyebilir. Denetleme sırasında, denetleme yapmaya yetkili görevliler tarafından her türlü defter, belge ve kayıtların verilmesi, yönetim yerleri, binalar ve eklentilerine girme, yazılı ve sözlü bilgi alma, örnek alma ve işlem ve hesapları denetleme isteminin elektronik sertifika hizmet sağlayıcıları ve ilgililer tarafından yerine getirilmesi zorunludur.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="16" başlık="İmza oluşturma verilerinin izinsiz kullanımı">
+      <mvz-fıkra no="1">
+        <template>Elektronik imza oluşturma amacı ile ilgili kişinin rızası dışında; imza oluşturma verisi veya imza oluşturma aracını elde eden, veren, kopyalayan ve bu araçları yeniden oluşturanlar ile izinsiz elde edilen imza oluşturma araçlarını kullanarak izinsiz elektronik imza oluşturanlar bir yıldan üç yıla kadar hapis ve elli günden az olmamak üzere adlî para cezasıyla cezalandırılırlar.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>Yukarıdaki fıkrada belirtilen suçlar elektronik sertifika hizmet sağlayıcısı çalışanları tarafından işlenirse bu cezalar yarısına kadar artırılır.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="17" başlık="Elektronik sertifikalarda sahtekârlık">
+      <mvz-fıkra no="1">
+        <template>Tamamen veya kısmen sahte elektronik sertifika oluşturanlar veya geçerli olarak oluşturulan elektronik sertifikaları taklit veya tahrif edenler ile bu elektronik sertifikaları bilerek kullananlar, iki yıldan beş yıla kadar hapis ve yüz günden az olmamak üzere adlî para cezasıyla cezalandırılır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>Yukarıdaki fıkrada belirtilen suçlar elektronik sertifika hizmet sağlayıcısı çalışanları tarafından işlenirse bu cezalar yarısına kadar artırılır.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="18" başlık="İdarî para cezaları">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunun;</template>
+        <mvz-bent no="a">
+          <template>10 uncu maddesindeki yükümlülüklerinden herhangi birini yerine getirmeyen elektronik sertifika hizmet sağlayıcısına onbeşbin Türk Lirasından otuzbin Türk Lirasına kadar,</template>
+        </mvz-bent>
+        <mvz-bent no="b">
+          <template>11 inci maddesindeki yükümlülüklerden herhangi birini yerine getirmeyen elektronik sertifika hizmet sağlayıcısına onikibin Türk Lirasından yirmibin Türk Lirasına kadar,</template>
+        </mvz-bent>
+        <mvz-bent no="c">
+          <template>12 nci maddesi hükümlerine aykırı hareket edenler hakkında onbeşbin Türk Lirasından otuzbin Türk Lirasına kadar,</template>
+        </mvz-bent>
+        <mvz-bent no="d">
+          <template>13 üncü maddesinin beşinci ve yedinci fıkralarındaki yükümlülükleri yerine getirmeyen elektronik sertifika hizmet sağlayıcısına onikibin Türk Lirasından yirmibin Türk Lirasına kadar,</template>
+        </mvz-bent>
+        <mvz-bent no="e">
+          <template>15 inci maddesi hükümlerine aykırı hareket eden elektronik sertifika hizmet sağlayıcısına otuzbin Türk Lirasından ellibin Türk Lirasına kadar,</template>
+        </mvz-bent>
+      </mvz-fıkra>
+      <mvz-fıkra no="0">
+        <template>idarî para cezası Telekomünikasyon Kurulu tarafından verilir. Bu madde hükümlerine göre ilgili tüzel kişi hakkında verilecek olan idarî para cezasının üst sınırı yetmişbeşbin Türk Lirasıdır.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="19" başlık="Tüzel kişilere özgü güvenlik tedbirleri">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunda tanımlanan suçlar dolayısıyla ilgili tüzel kişiler hakkında Türk Ceza Kanununun 60 ıncı maddesi hükmüne göre tüzel kişilere özgü güvenlik tedbirlerine hükmolunur.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>İdarî para cezasını gerektiren eylemlerin işlendikleri tarihten itibaren geriye doğru üç yıl içinde üçüncü kez işlenmesi hâlinde Kurum tarafından elektronik sertifika hizmet sağlayıcısı tüzel kişinin faaliyet izninin iptaline karar verilir.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+  </mvz-kısım>
+  <mvz-kısım no="4-DÖRDÜNCÜ" başlık="Çeşitli Hükümler">
+    <mvz-madde no="20" başlık="Yönetmelik">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunun uygulanmasına ilişkin usul ve esaslar, ilgili kurum ve kuruluşların görüşü alınarak Kurum tarafından çıkarılacak yönetmeliklerle düzenlenir.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="21" başlık="Kamu kurum ve kuruluşları hakkında uygulanmayacak hükümler">
+      <mvz-fıkra no="1">
+        <template>Bu Kanunun 19 uncu maddesi hükmü, elektronik sertifika hizmet sağlama faaliyeti yerine getiren kamu kurum ve kuruluşları hakkında uygulanmaz.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="22" başlık="">
+      <mvz-fıkra no="1">
+        <template>(22.4.1926 tarihli ve 818 sayılı Borçlar Kanunu ile ilgili olup yerine işlenmiştir.)</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="23" başlık="">
+      <mvz-fıkra no="1">
+        <template>(18.6.1927 tarihli ve 1086 sayılı Hukuk Usulü Muhakemeleri Kanunu ile ilgili olup yerine işlenmiştir.)</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="24" başlık="">
+      <mvz-fıkra no="1">
+        <template>(5.4.1983 tarihli ve 2813 sayılı Telsiz Kanunu ile ilgili olup yerine işlenmiştir.)</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="1" başlık="Elektronik mühür" tür="EK">
+      <mvz-fıkra no="1">
+        <template>Elektronik mühür, başka bir elektronik veriye eklenen veya elektronik veriyle mantıksal bağlantısı bulunan ve mühür sahibinin bilgilerini doğrulama amacıyla kullanılan elektronik veridir.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>Elektronik mühür sahibi; elektronik mührü oluşturan kamu kurum ve kuruluşları, kamu idareleri, kamu kurumu niteliğindeki meslek kuruluşları ve üst kuruluşları, kamu ve özel hukuk tüzel kişileri ile yargı mercileri ve noterliklerdir.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="3">
+        <template>Elektronik mühür, elektronik belgenin veya verinin mühür sahibi tarafından oluşturulduğunu, belgenin veya verinin kaynağını ve bütünlüğünü garanti eden delil kaydıdır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="4">
+        <template>Elektronik mühür, resmî mühür dâhil her türlü fiziki mühür ile aynı hukuki niteliği haizdir.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="5">
+        <template>Elektronik mühür oluşturma amacı ile ilgili mühür sahibinin rızası veya talebi dışında; mühür oluşturma verisi veya mühür oluşturma aracını elde eden, veren, kopyalayan ve bu araçları yeniden oluşturanlar ile izinsiz elde edilen mühür oluşturma araçlarını kullanarak izinsiz elektronik mühür oluşturanlar bir yıldan üç yıla kadar hapis ve elli günden az olmamak üzere adlî para cezasıyla cezalandırılırlar. Suçun elektronik sertifika hizmet sağlayıcısı çalışanları tarafından işlenmesi halinde, bu cezalar yarısına kadar artırılır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="6">
+        <template>Kanunlarda yer alan elektronik imzaya ilişkin hükümler, kıyasen elektronik mühür hakkında da uygulanır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="7">
+        <template>Elektronik sertifika hizmet sağlayıcılarının kanunlarda yer alan elektronik imza ile ilgili hak, yetki ve yükümlülükleri, elektronik mühür hakkında da uygulanır. Bu yükümlülüklere aykırı hareket eden elektronik sertifika hizmet sağlayıcıları hakkında 18 inci maddede belirtilen idari para cezaları uygulanır.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="2" başlık="İnternet sitesi kimlik doğrulama sertifikası ve diğer elektronik sertifikalar" tür="EK">
+      <mvz-fıkra no="1">
+        <template>İnternet sitesi kimlik doğrulama sertifikası, bir internet sitesi ile bu sitenin sahibi olan gerçek veya tüzel kişinin bilgilerini birbirine bağlayan elektronik kayıttır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="2">
+        <template>Benzer altyapıyı kullanan diğer elektronik sertifikalar, elektronik veriyi şifreleme veya verinin bütünlüğünü, inkâr edilemezliğini ve kaynağını belirleme gibi amaçlarla kullanılmak üzere elektronik sertifika hizmet sağlayıcıları tarafından açık anahtar altyapısı vasıtasıyla üretilen sertifikalardır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="3">
+        <template>Kanunlarda yer alan elektronik imzaya ilişkin hükümler, kıyasen internet sitesi kimlik doğrulama sertifikası ve benzer altyapıyı kullanan diğer elektronik sertifikalar hakkında da uygulanır.</template>
+      </mvz-fıkra>
+      <mvz-fıkra no="4">
+        <template>Elektronik sertifika hizmet sağlayıcılarının kanunlarda yer alan elektronik imza ile ilgili hak, yetki ve yükümlülükleri, internet sitesi kimlik doğrulama sertifikası ve benzer altyapıyı kullanan diğer elektronik sertifikalar hakkında da uygulanır. Bu yükümlülüklere aykırı hareket eden elektronik sertifika hizmet sağlayıcıları hakkında 18 inci maddede belirtilen idari para cezaları uygulanır.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="25" başlık="Yürürlük">
+      <mvz-fıkra no="1">
+        <template>Bu Kanun yayımı tarihinden altı ay sonra yürürlüğe girer.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+    <mvz-madde no="26" başlık="Yürütme">
+      <mvz-fıkra no="1">
+        <template>Bu Kanun hükümlerini Bakanlar Kurulu yürütür.</template>
+      </mvz-fıkra>
+    </mvz-madde>
+  </mvz-kısım>
+
+  <mvz-geçmişi>
+    <mvz-ide no="1" idea="5728" idelen="16, 17, 18, 19" tarih="8/2/2008" />
+    <mvz-ide no="2" idea="6661" idelen="10" tarih="27/1/2016" />
+    <mvz-ide no="3" idea="6728" idelen="5" tarih="9/8/2016" />
+    <mvz-ide no="4" idea="7263" idelen="10, 20, 21, Ek Madde 1, Ek Madde 2" tarih="3/2/2021" />
+    <mvz-ide no="5" idea="7349" idelen="5" tarih="25/12/2021" />
+  </mvz-geçmişi>
