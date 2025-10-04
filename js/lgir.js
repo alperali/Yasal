@@ -24,13 +24,13 @@ function proc_fav() {
     if (document.querySelector('#lst-başlık').checked)
       document.querySelector('#tbfavoriler tbody').insertAdjacentHTML('beforeend',
       `<tr data-no="${+this.dataset.no}">
-         <td><a href="./yasa.html?m=${+this.dataset.no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(+this.dataset.no).başlık}</a></td>
+         <td><a href="./yasa.html?m=${+this.dataset.no}" class="${cls_başlık_sıralı}">${belgeler.get(+this.dataset.no).başlık}</a></td>
          <td class="align-middle">${+this.dataset.no}</td>
        </tr>`);
     else
       document.querySelector('#tbfavoriler tbody').insertAdjacentHTML('beforeend',
       `<tr data-no="${+this.dataset.no}">
-         <td class="align-middle"><a href="./yasa.html?m=${+this.dataset.no}&inapp=1" class="${cls_sayı_sıralı}">${+this.dataset.no}</a></td>
+         <td class="align-middle"><a href="./yasa.html?m=${+this.dataset.no}" class="${cls_sayı_sıralı}">${+this.dataset.no}</a></td>
          <td>${belgeler.get(+this.dataset.no).başlık}</td>
        </tr>`);
   }
@@ -46,7 +46,7 @@ document.querySelector('#lst-başlık').addEventListener('change', () => {
   başlık_sıralı
           .forEach(no => tbl = tbl.concat(`<tr>
     <td class="align-middle"><div class="form-check"><input class="form-check-input" type="checkbox" data-no="${no}"${favoriler.includes(no.toString()) ? ' checked':''}></div></td>
-    <td><a href="./yasa.html?m=${no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(no).başlık}</a></td>
+    <td><a href="./yasa.html?m=${no}" class="${cls_başlık_sıralı}">${belgeler.get(no).başlık}</a></td>
     <td class="align-middle">${no}</td>
     </tr>`));
   document.querySelector('#tbliste').replaceChildren();
@@ -66,7 +66,7 @@ document.querySelector('#lst-başlık').addEventListener('change', () => {
     let tbl = '';
     favoriler.sort((a,b) => belgeler.get(+a).başlık.localeCompare(belgeler.get(+b).başlık, 'tr', {sensitivity: 'base'}))
              .forEach(no => tbl = tbl.concat(`<tr data-no="${+no}">
-      <td><a href="./yasa.html?m=${+no}&inapp=1" class="${cls_başlık_sıralı}">${belgeler.get(+no).başlık}</a></td>
+      <td><a href="./yasa.html?m=${+no}" class="${cls_başlık_sıralı}">${belgeler.get(+no).başlık}</a></td>
       <td class="align-middle">${+no}</td>
       </tr>`));
     document.querySelector('#tbfavoriler').replaceChildren();
@@ -85,7 +85,7 @@ document.querySelector('#lst-sayı').addEventListener('change', () => {
   sayı_sıralı
           .forEach(no => tbl = tbl.concat(`<tr>
     <td class="align-middle"><div class="form-check"><input class="form-check-input" type="checkbox" data-no="${no}"${favoriler.includes(no.toString()) ? ' checked':''}></div></td>
-    <td class="align-middle"><a href="./yasa.html?m=${no}&inapp=1" class="${cls_sayı_sıralı}">${no}</a></td>
+    <td class="align-middle"><a href="./yasa.html?m=${no}" class="${cls_sayı_sıralı}">${no}</a></td>
     <td>${belgeler.get(+no).başlık}</td></tr>`));
   document.querySelector('#tbliste').replaceChildren();
   document.querySelector('#tbliste').insertAdjacentHTML('afterbegin',
@@ -104,7 +104,7 @@ document.querySelector('#lst-sayı').addEventListener('change', () => {
     let tbl = '';
     favoriler.sort((a,b) => +a - +b)
              .forEach(no => tbl = tbl.concat(`<tr data-no="${+no}">
-      <td class="align-middle"><a href="./yasa.html?m=${+no}&inapp=1" class="${cls_sayı_sıralı}">${+no}</a></td>
+      <td class="align-middle"><a href="./yasa.html?m=${+no}" class="${cls_sayı_sıralı}">${+no}</a></td>
       <td>${belgeler.get(+no).başlık}</td></tr>`));
     document.querySelector('#tbfavoriler').replaceChildren();
     document.querySelector('#tbfavoriler').insertAdjacentHTML('afterbegin',
