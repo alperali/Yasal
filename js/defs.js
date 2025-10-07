@@ -88,7 +88,8 @@ const belgeler = new Map([
   [ 6326, { başlık: 'TURİST REHBERLİĞİ MESLEK KANUNU'} ],
   [ 442,  { başlık: 'KÖY KANUNU'} ],
   [ 6735, { başlık: 'ULUSLARARASI İŞGÜCÜ KANUNU'} ],
-  [ 854,  { başlık: 'DENİZ İŞ KANUNU'} ]
+  [ 854,  { başlık: 'DENİZ İŞ KANUNU'} ],
+  [ 4342, { başlık: 'MERA KANUNU'} ]
 ]);
 
 export
