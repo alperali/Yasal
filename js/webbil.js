@@ -63,7 +63,7 @@ customElements.define('mvz-künye', class extends HTMLElement {
 
     const ttl =
     document.querySelector('#içndk-başlık').textContent = this.başlık.length <= 60 ? this.başlık : this.başlık.substring(0, 60).concat('…');
-    document.title = `Yasal - ${ttl}`;
+    document.title = `${this.no} - ${ttl}`;
     // document.querySelector('#yatay-içndk-başlık').textContent = `No: ${this.no}`;
     // document.querySelector('#yasa').insertAdjacentHTML('afterbegin',
     document.querySelector('#yasa > #bekle').insertAdjacentHTML('afterend',
