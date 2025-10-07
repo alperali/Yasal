@@ -86,7 +86,8 @@ const belgeler = new Map([
   [ 6306, { başlık: 'AFET RİSKİ ALTINDAKİ ALANLARIN DÖNÜŞTÜRÜLMESİ HAKKINDA KANUN'} ],
   [ 6585, { başlık: 'PERAKENDE TİCARETİN DÜZENLENMESİ HAKKINDA KANUN'} ],
   [ 6326, { başlık: 'TURİST REHBERLİĞİ MESLEK KANUNU'} ],
-  [ 442,  { başlık: 'KÖY KANUNU'} ]
+  [ 442,  { başlık: 'KÖY KANUNU'} ],
+  [ 6735, { başlık: 'ULUSLARARASI İŞGÜCÜ KANUNU'} ]
 ]);
 
 export
