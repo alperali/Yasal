@@ -90,7 +90,8 @@ const belgeler = new Map([
   [ 6735, { başlık: 'ULUSLARARASI İŞGÜCÜ KANUNU'} ],
   [ 854,  { başlık: 'DENİZ İŞ KANUNU'} ],
   [ 4342, { başlık: 'MERA KANUNU'} ],
-  [ 5262, { başlık: 'ORGANİK TARIM KANUNU'} ]
+  [ 5262, { başlık: 'ORGANİK TARIM KANUNU'} ],
+  [ 6284, { başlık: 'AİLENİN KORUNMASI VE KADINA KARŞI ŞİDDETİN ÖNLENMESİNE DAİR KANUN'} ]
 ]);
 
 export
