@@ -1114,15 +1114,19 @@ customElements.define('mvz-ide', class extends HTMLElement {
 });
 
 customElements.define('mvz-literal', class extends HTMLElement {
-  // static observedAttributes = ['no'];
+  static observedAttributes = ['konu', 'tür'];
 
   constructor() {
     super();
   }
 
-  // get no() {
-    // return this.getAttribute('no');
-  // }
+  get konu() {
+    return this.getAttribute('konu');
+  }
+
+  get tür() {
+    return this.getAttribute('tür');
+  }
 
   connectedCallback() {
     this.insertAdjacentHTML('afterbegin', `<div>${this.querySelector('template').innerHTML}</div>`);
