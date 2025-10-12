@@ -22,3 +22,5 @@ Hiçbir semantik bilgi içermeyen orijinal kanun metinlerinde bu dönüşümü s
 Bu amaçla özel bir _heuristic parser_ geliştirilmiş ve dönüşüm bu araç yardımıyla önceden çevrim dışı yapılmıştır.
 Başarı oranı ortalama %80'dir (%20 elle müdahale).
 Metnin büyüklüğü ve "bozukluğu"na bağlı olarak bu işlem birkaç saat ile birkaç gün arası sürmektedir.
+
+[Belge Yapısı](https://github.com/alperali/Yasal/wiki)
