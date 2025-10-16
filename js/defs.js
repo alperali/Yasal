@@ -95,7 +95,8 @@ const belgeler = new Map([
   [ 5395, { başlık: 'ÇOCUK KORUMA KANUNU'} ],
   [ 5378, { başlık: 'ENGELLİLER HAKKINDA KANUN'} ],
   [ 1416, { başlık: 'ECNEBİ MEMLEKETLERE GÖNDERİLECEK TALEBE HAKKINDA KANUN'} ],
-  [ 2429, { başlık: 'ULUSAL BAYRAM VE GENEL TATİLLER HAKKINDA KANUN'} ]
+  [ 2429, { başlık: 'ULUSAL BAYRAM VE GENEL TATİLLER HAKKINDA KANUN'} ],
+  [ 1117, { başlık: 'KÜÇÜKLERİ MUZIR NEŞRİYATTAN KORUMA KANUNU'} ]
 ]);
 
 export
