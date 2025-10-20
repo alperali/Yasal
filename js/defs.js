@@ -100,6 +100,7 @@ const belgeler = new Map([
   [ 5324, { başlık: 'KOZMETİK KANUNU'} ],
   [ 3713, { başlık: 'TERÖRLE MÜCADELE KANUNU'} ],
   [ 7179, { başlık: 'ASKERALMA KANUNU'} ],
+  [ 6191, { başlık: 'SÖZLEŞMELİ ERBAŞ VE ER KANUNU'} ],
   [ 4483, { başlık: 'MEMURLAR VE DİĞER KAMU GÖREVLİLERİNİN YARGILANMASI HAKKINDA KANUN'} ],
   [ 3628, { başlık: 'MAL BİLDİRİMİNDE BULUNULMASI, RÜŞVET VE YOLSUZLUKLARLA MÜCADELE KANUNU'} ]
 ]);
