@@ -102,6 +102,7 @@ const belgeler = new Map([
   [ 7179, { başlık: 'ASKERALMA KANUNU'} ],
   [ 6191, { başlık: 'SÖZLEŞMELİ ERBAŞ VE ER KANUNU'} ],
   [ 6356, { başlık: 'SENDİKALAR VE TOPLU İŞ SÖZLEŞMESİ KANUNU'} ],
+  [ 4688, { başlık: 'KAMU GÖREVLİLERİ SENDİKALARI VE TOPLU SÖZLEŞME KANUNU'} ],
   [ 4483, { başlık: 'MEMURLAR VE DİĞER KAMU GÖREVLİLERİNİN YARGILANMASI HAKKINDA KANUN'} ],
   [ 3628, { başlık: 'MAL BİLDİRİMİNDE BULUNULMASI, RÜŞVET VE YOLSUZLUKLARLA MÜCADELE KANUNU'} ]
 ]);
