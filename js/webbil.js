@@ -851,7 +851,7 @@ customElements.define('mvz-b6', class extends HTMLElement {
 
 
 customElements.define('mvz-madde', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık', 'tür'];
+  static observedAttributes = ['no', 'başlık', 'tür', 'durum'];
 
   constructor() {
     super();
@@ -869,15 +869,19 @@ customElements.define('mvz-madde', class extends HTMLElement {
     return this.getAttribute('tür');
   }
 
+  get durum() {
+    return this.getAttribute('durum');
+  }
+
   connectedCallback() {
     const elem = 'madde';
-    const prfx = this.tür ? this.tür : '';
+    const prfx = this.tür ?? '';
 
     let toctag;
     let parenttoctag = this.parentElement.getAttribute('toc-tag');
     if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
         // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${prfx}${elem}-${this.no.replace('/', '')}`;  // 8/A gibi madde numarası olursa sonra querySelector hata veriyor / nedeniyle
+        toctag = `${parenttoctag}_${prfx}${elem}-${this.no.replace(/[/ ]/g, '')}`;  // madde numarasında boşluk veya / varsa querySelector hata veriyor (bunların kalkması id'nin unique kalmasına engel değil)
         const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
         e.setAttribute('href', `#${parenttoctag}`);
         e.setAttribute('data-bs-toggle', 'collapse');
@@ -894,13 +898,27 @@ customElements.define('mvz-madde', class extends HTMLElement {
       // bu ilk child değil, mevcut collapsible listenin sonuna ekle
       // veya
       // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${prfx}${elem}-${this.no.replace('/', '')}`;  // 8/A gibi madde numarası olursa sonra querySelector hata veriyor / nedeniyle
+      toctag = `${parenttoctag}_${prfx}${elem}-${this.no.replace(/[/ ]/g, '')}`;  // madde numarasında boşluk veya / varsa querySelector hata veriyor (bunların kalkması id'nin unique kalmasına engel değil)
       // const litm = this._build_li(toctag);
       document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', this._build_li(toctag, false));
       document.querySelector('#madde').insertAdjacentHTML('beforeend', this._build_li(toctag, true));
     }
 
     this.setAttribute('toc-tag', toctag);
+
+    const st = { 'iptal': 'İptal', 'mülga': 'Mülga'};
+    let drm = ' ';
+    if (this.durum?.match(/mülga|iptal/))
+      drm = ` <em>${st[this.durum]}</em>`;
+
+    let padtop='', ln='';
+    if (this.başlık?.trim().length > 0)
+      ln = `<div class="pt-2 fw-bold stil-madde-başlık">${this.başlık}</div>`;
+    else
+      padtop = 'pt-1 ';
+
+    ln += `<div data-madde class="${padtop}mb-1"><strong>${this.tür ? this.tür+' ': ''}MADDE ${this.no}-</strong>${drm}</div>`;
+    this.insertAdjacentHTML('afterbegin', ln);
   }
 
   _build_li(toctag, madde) {
@@ -924,7 +942,7 @@ customElements.define('mvz-madde', class extends HTMLElement {
 });
 
 customElements.define('mvz-fıkra', class extends HTMLElement {
-  static observedAttributes = ['no'];
+  static observedAttributes = ['no', 'durum'];
 
   constructor() {
     super();
@@ -934,48 +952,30 @@ customElements.define('mvz-fıkra', class extends HTMLElement {
     return this.getAttribute('no');
   }
 
+  get durum() {
+    return this.getAttribute('durum');
+  }
+
   connectedCallback() {
-    let r;
-    const fkr = this.querySelector('template').content.textContent;
+    const st = { 'iptal': 'İptal', 'mülga': 'Mülga'};
+    let fkr;
+    const f_no = +this.no == 0 ? '' : `<span class="stil-fıkra-no">(<strong>${this.no}</strong>)</span>`;
 
-    if (this.no.match(/^[1A]$/) && this.parentElement.nodeName == 'MVZ-MADDE') {  // Giriş'te Madde yazmasın diye MVZ-MADDE kontrolü eklendi (nodeName'ler hep upper-case)
-                                                                         // (Giriş, Başlangıç gibi bölümlerde madde yok, direkt fıkralar yazılıyor)
-      const p = fkr.trim().match(/^Mülga$|^[İi]ptal$|^(-[0-9]+)/i);
-      // yukarıdaki pattern Madde için mülga/iptal kontrolü yapıyor, 1. fıkra mülga/iptal ise fıkra numarasız iptal/mülga yazması için
-      // yukardaki pattern'da son kısım "MADDE 3 ila 24" gibi bir durumda fıkra no vermesin diye ("MADDE 3- -24: " diye render edilecek)
-      if (p)
-        if (p[1])
-          r = `<span><strong>${p[1]}</strong>${fkr.substring(p[1].length)}</span>`;  // "MADDE 3- -24: " durumu. -24 kısmını bold yapıp sonra fıkranın gerisini ekliyor
-        else
-          r = `<span>${fkr}</span>`;
-      else
-        r = `<span class="stil-fıkra-no">(<strong>${this.no}</strong>)</span> <span class="hcl">${fkr}</span>`;
+    if (this.durum?.match(/mülga|iptal/))
+      fkr = `<em>${st[this.durum]}</em>`;
+    else
+      fkr = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
 
-      let pad='', ln='';
-      if (this.parentElement.başlık?.trim().length > 0)
-        ln = `<div class="pt-2 fw-bold stil-madde-başlık">${this.parentElement.başlık}</div>`;
-      else
-        pad = 'pt-1 ';
-      
-      ln += `<div class="${pad}mb-1"><strong>${this.parentElement.tür ? this.parentElement.tür+' ': ''}MADDE ${this.parentElement.no}-</strong> ${r}</div>`;
-      this.insertAdjacentHTML('afterbegin', ln);
-
-      // this.insertAdjacentHTML('afterbegin',
-      //   `<div class="mb-1">                                              
-      //      <strong>${this.parentElement.tür ? this.parentElement.tür+' ': ''}MADDE ${this.parentElement.no}-</strong> ${r}</div>`);
-      // if (this.parentElement.başlık?.trim().length > 0)                  
-      //   this.insertAdjacentHTML('afterbegin', `<div class="pt-2 fw-bold">${this.parentElement.başlık}</div>`);
-    }
-    else {
-      const f_no = +this.no == 0 ? '' : `<span class="stil-fıkra-no">(<strong>${this.no}</strong>)</span> `;
-      this.insertAdjacentHTML('afterbegin', `<div class="mb-1">${f_no}<span class="hcl">${fkr}</span></div>`);
-    }
+    if (this.no.match(/^[1A]$/))
+      this.parentElement.querySelector('div[data-madde]').insertAdjacentHTML('beforeend', `${f_no} ${fkr}`);
+    else
+      this.insertAdjacentHTML('beforebegin', `<div class="mb-1">${f_no} ${fkr}</div`);
   }
 
 });
 
 customElements.define('mvz-bent', class extends HTMLElement {
-  static observedAttributes = ['no'];
+  static observedAttributes = ['no', 'durum'];
 
   constructor() {
     super();
@@ -985,15 +985,27 @@ customElements.define('mvz-bent', class extends HTMLElement {
     return this.getAttribute('no');
   }
 
+  get durum() {
+    return this.getAttribute('durum');
+  }
+
   connectedCallback() {
-    const b_no = this.no == '0' ? '' : `<span class="stil-bent-no"><strong>${this.no}</strong>${this.no.endsWith('.')?'':')'}</span> `;  // 1. gibi rakam ve nokta olarak girilmiş kuraldışı bentler için ) koymasın diye endsWith() kısmı
-    this.insertAdjacentHTML('afterbegin', `<div class="ps-2 mb-1">${b_no}<span class="hcl">${this.querySelector('template').content.textContent}</span></div>`);
+    const st = { 'iptal': 'İptal', 'mülga': 'Mülga'};
+    let bnt;
+    const b_no = this.no == '0' ? '' : `<span class="stil-bent-no"><strong>${this.no}</strong>${this.no.endsWith('.')?'':')'}</span> `;  // 1. gibi rakam ve nokta olarak girilmiş kuraldışı bent no.lar için ) koymasın diye endsWith() kısmı
+
+    if (this.durum?.match(/mülga|iptal/))
+      bnt = `<em>${st[this.durum]}</em>`;
+    else
+      bnt = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
+
+    this.insertAdjacentHTML('beforebegin', `<div class="ps-2 mb-1">${b_no} ${bnt}</div>`);
   }
 
 });
 
 customElements.define('mvz-altbent', class extends HTMLElement {
-  static observedAttributes = ['no'];
+  static observedAttributes = ['no', 'durum'];
 
   constructor() {
     super();
@@ -1003,9 +1015,21 @@ customElements.define('mvz-altbent', class extends HTMLElement {
     return this.getAttribute('no');
   }
 
+  get durum() {
+    return this.getAttribute('durum');
+  }
+
   connectedCallback() {
-    const ab_no = this.no == '0' ? '' : `<strong>${this.no}</strong>) `
-    this.insertAdjacentHTML('afterbegin', `<div class="ps-3 mb-1">${ab_no}<span class="hcl">${this.querySelector('template').content.textContent}</span></div>`);
+    const st = { 'iptal': 'İptal', 'mülga': 'Mülga'};
+    let abnt;
+    const ab_no = this.no == '0' ? '' : `<strong>${this.no}</strong>) `;
+
+    if (this.durum?.match(/mülga|iptal/))
+      abnt = `<em>${st[this.durum]}</em>`;
+    else
+      abnt = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
+
+    this.insertAdjacentHTML('beforebegin', `<div class="ps-3 mb-1">${ab_no} ${abnt}</div>`);
   }
 
 });
@@ -1025,16 +1049,7 @@ customElements.define('mvz-geçmişi', class extends HTMLElement {
     const litm = this._build_li(toctag);
     document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
 
-    this.insertAdjacentHTML('afterbegin',
-        //  `<div class="text-center mt-5 mb-3 small" id="geçmişi">
-        //     <div class="row align-items-stretch gx-1 border-bottom border-top border-dark" toc-tag="${toctag}">
-        //       <div class="col border-start border-end border-dark-subtle d-flex align-items-center justify-content-center"><strong>Değiştiren / Ekleyen / İptal Eden</strong></div>
-        //       <div class="col border-start border-end border-dark-subtle d-flex align-items-center justify-content-center"><strong>Değişen / Eklenen / İptal Edilen</strong></div>
-        //       <div class="col border-start border-end border-dark-subtle d-flex align-items-center justify-content-center"><strong>Tarih</strong></div>
-        //     </div>
-        //   </div>`);
-
-
+    this.insertAdjacentHTML('beforebegin',
        `<table class="table table-responsive table-bordered table-striped table-sm small text-center mt-5">
           <thead toc-tag="${toctag}">
             <tr class="align-middle">
@@ -1129,7 +1144,7 @@ customElements.define('mvz-literal', class extends HTMLElement {
   }
 
   connectedCallback() {
-    this.insertAdjacentHTML('afterbegin', `<div>${this.querySelector('template').innerHTML}</div>`);
+    this.insertAdjacentHTML('beforebegin', `<div>${this.querySelector('template').innerHTML}</div>`);
   }
 
 });
