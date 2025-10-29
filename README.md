@@ -19,8 +19,12 @@ tarayıcı içinde _light DOM_ bazlı _rendering_ yapar, modern ve hızlıdır.
 
 Kanun metinleri bu çalışmaya özgü tanımlanmış _custom HTML elements_ ile tek tek semantik işaretlenmiştir.
 Hiçbir semantik bilgi içermeyen orijinal kanun metinlerinde bu dönüşümü sağlamak zorlu ve zaman alıcı bir iştir.
-Bu amaçla özel bir _heuristic parser_ geliştirilmiş ve dönüşüm bu araç yardımıyla önceden çevrim dışı yapılmıştır.
+Bu amaçla özel bir _heuristic[^1] parser_ geliştirilmiş ve dönüşüm bu araç yardımıyla önceden çevrim dışı yapılmıştır.
 Başarı oranı ortalama %80'dir (%20 elle müdahale).
 Metnin büyüklüğü ve "bozukluğu"na bağlı olarak bu işlem birkaç saat ile birkaç gün arası sürmektedir.
 
 [Belge Yapısı](https://github.com/alperali/Yasal/wiki)
+
+[^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
+usul ve esaslara göre yazılan bu parser, pek çok kanun metninin ilgi yönetmeliğe uymadan yazılmış olması nedeniyle
+deterministik olmaktan çıkıp heuristic bir hal almıştır.
