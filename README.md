@@ -45,7 +45,7 @@ Metnin büyüklüğü ve "bozukluğu"na bağlı olarak bu işlem birkaç saat il
 
 ---
 
-EBNF notasyonu ile belgenin örgün betimlemesi aşağıdaki gibidir:
+EBNF notasyonunda belgenin örgün betimlenişi aşağıdaki gibidir:
 ```ebnf
 Kanun    =  künye , yasa , geçmişi ;
 
@@ -54,16 +54,14 @@ k-attrib   =  k-tür , k-no , k-başlık , k-tarih , k-rgtarih , k-rgsayı , [k-
 
 k-tür      =  sp , 'tür="kanun"' ;
 k-no       =  sp , 'no="' , num , '"' ;
-k-başlık   =  sp , 'başlık="' , bharf-x , { bharf-x } , '"' ;   (* adı *)
+k-başlık   =  sp , 'başlık="' , bharf-x , { bharf-sp-x } , '"' ;   (* adı *)
 k-tarih    =  sp , 'tarih="' , tarih , '"' ;          (* kabul edildiği tarih *)
 k-rgtarih  =  sp , 'rgazete-tarih="' , tarih , '"' ;  (* yayınlandığı resmi gazetenin tarihi *)
 k-rgsayı   =  sp , 'rgazete-sayı="' , num , '"' ;     (* yayınlandığı resmi gazetenin sayısı *)
 k-rgmükerrer = sp , 'rgazete-mükerrer="' , nzdgt , '"' ;
-kd-tertip  =  sp , 'düstur-tertip="' , k-metin-t , '"' ;
+kd-tertip  =  sp , 'düstur-tertip="' , ( '3' | '4' | '5' ) , '"' ;
 kd-cilt    =  sp , 'düstur-cilt="' , num , '"' ;
 kd-sayfa   =  sp , 'düstur-sayfa="' , num , '"' ;
-
-k-metin-t  =  '3' | '4' | '5' ;
 
 yasa    =  ? TBD ? ;
 
@@ -82,9 +80,10 @@ nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 dgt   =  nzdgt | '0' ;
 num   =  nzdgt , { dgt } ;
 bharf =  'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
-bharf-x = bharf | 'Â' | 'Î' | 'Û' ;
-tarih =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
-tarih-sep = '/' | '.' ;
+bharf-x    = bharf | 'Â' | 'Î' | 'Û' ;
+bharf-sp-x = bharf-x | sp ;
+tarih      =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
+tarih-sep  = '/' | '.' ;
 ```
 
 [^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
