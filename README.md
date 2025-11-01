@@ -65,18 +65,25 @@ kd-sayfa   =  sp , 'düstur-sayfa="' , num , '"' ;
 
 k-metin-t  =  '3' | '4' | '5' ;
 
-yasa    = (* TBD *) ;
+yasa    =  ? TBD ? ;
 
-geçmişi = (* TBD *) ;
-
+geçmişi   =  '<mvz-geçmişi>' , { g-ide } , '</mvz-geçmişi>' ;
+g-ide     =  '<mvz-ide' , g-attrib , '/>' ;      (* İptal/Değiş/Ekle *)
+g-attrib  =  g-no , g-idea , g-idelen , g-tarih ;
+g-no      =  sp , 'no="' , num , '"' ;           (* sıra numarası *)
+g-idea    =  sp , 'idea="' , g-metin-i , '"' ;   (* iptal eden/değiştiren/ekleyen *)
+g-idelen  =  sp , 'idelen="' , g-metin-a , '"' ; (* iptal edilen/değiştirilen/eklenen *)
+g-tarih   =  sp , 'tarih="' , tarih , '"' ;      (* yürürlüğe giriş tarihi *)
+g-metin-i =  ? iptal eden/değiştiren/ekleyen kanun/KHK/AM kararı ? ;
+g-metin-a =  ? iptal edilen/değiştirilen/eklenen maddesi ? ;
 
 sp    =  ' ' , {' '} ;
 nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
-dgt   = nzdgt | '0' ;
-num   = nzdgt , { dgt } ;
-bharf = 'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
+dgt   =  nzdgt | '0' ;
+num   =  nzdgt , { dgt } ;
+bharf =  'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
 bharf-x = bharf | 'Â' | 'Î' | 'Û' ;
-tarih = nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
+tarih =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
 tarih-sep = '/' | '.' ;
 ```
 
