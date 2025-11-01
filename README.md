@@ -63,10 +63,10 @@ kd-tertip  =  sp , 'düstur-tertip="' , k-metin-t , '"' ;
 kd-cilt    =  sp , 'düstur-cilt="' , int , '"' ;
 kd-sayfa   =  sp , 'düstur-sayfa="' , int , '"' ;
 
-k-metin-b  =  (* adı (büyük harf) *) ;
-k-metin-k  =  (* kabul edildiği tarih *) ;
-k-metin-r  =  (* yayınlandığı resmi gazetenin tarihi *) ;
-k-metin-s  =  (* yayınlandığı resmi gazetenin sayısı *) ;
+k-metin-b  =  bharf-x , { bharf-x } ;  (* adı *)
+k-metin-k  =  tarih ;  (* kabul edildiği tarih *)
+k-metin-r  =  tarih ;  (* yayınlandığı resmi gazetenin tarihi *)
+k-metin-s  =  int   ;  (* yayınlandığı resmi gazetenin sayısı *)
 k-metin-t  =  '3' | '4' | '5' ;
 
 yasa    = (* TBD *) ;
@@ -76,7 +76,12 @@ geçmişi = (* TBD *) ;
 
 sp    =  ' ' , {' '} ;
 nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
-int   =  nzdgt , {'0' | nzdgt} ;
+dgt   = nzdgt | '0' ;
+int   = nzdgt , {'0' | nzdgt} ;
+bharf = 'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
+bharf-x = bharf | 'Â' | 'Î' | 'Û' ;
+tarih = nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
+tarih-sep = '/' | '.' ;
 ```
 
 [^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
