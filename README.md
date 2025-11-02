@@ -65,6 +65,46 @@ kd-sayfa   =  sp , 'düstur-sayfa="' , num , '"' ;
 
 yasa    =  ? TBD ? ;
 
+ab-b1     = '<mvz-b1' , b1-attrib , '>' , ( ab-b2ler | ab-b3ler | ab-b4ler | ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b1>' ;
+ab-b2     = '<mvz-b2' , b2-attrib , '>' , ( ab-b3ler | ab-b4ler | ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b2>' ;
+ab-b3     = '<mvz-b3' , b3-attrib , '>' , ( ab-b4ler | ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b3>' ;
+ab-b4     = '<mvz-b4' , b4-attrib , '>' , ( ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b4>' ;
+ab-b5     = '<mvz-b5' , b5-attrib , '>' , ( ab-b6lar | maddeler ) , '</mvz-b5>' ;
+ab-b6     = '<mvz-b6' , b6-attrib , '>' , maddeler , '</mvz-b6>' ;
+
+ab-b2ler  = ab-b2 , { ab-b2 } ;
+ab-b3ler  = ab-b3 , { ab-b3 } ;
+ab-b4ler  = ab-b4 , { ab-b4 } ;
+ab-b5ler  = ab-b5 , { ab-b5 } ;
+ab-b6ler  = ab-b6 , { ab-b6 } ;
+
+b1-attrib = b1-no , b1-başlık ;
+b1-no     = sp , 'no="' , ( 'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'İ' | 'J' | 'K' | 'L' ) , '"' ;  (* b2 ile karışmaması için I yok *)
+b1-başlık = sp , 'başlık="' , başlık , '"' ;
+
+b2-attrib = b2-no , b2-başlık ;
+b2-no     = sp , 'no="' , ( 'I' | 'II' | 'III' | 'IV' | 'V' | 'VI' | 'VII' | 'VIII' | 'IX' | 'X' | 'XI' | 'XII' | 'XIII' | 'XIV' | 'XV' | 'XVI' | 'XVII' | 'XVIII' | 'XIX' ) , '"' ;
+b2-başlık = sp , 'başlık="' , başlık , '"' ;
+
+b3-attrib = b3-no , b3-başlık ;
+b3-no     = sp , 'no="' , num , '"' ;
+b3-başlık = sp , 'başlık="' , başlık , '"' ;
+
+b4-attrib = b4-no , b4-başlık ;
+b4-no     = sp , 'no="' , kharf , '"' ;
+b4-başlık = sp , 'başlık="' , başlık , '"' ;
+
+b5-attrib = b5-no , b5-başlık ;                  (* bu alt başlık sadece 6102'de var *)
+b5-no     = sp , 'no="' , kharf , kharf , '"' ;
+b5-başlık = sp , 'başlık="' , başlık , '"' ;
+
+b6-attrib = b6-no , b6-başlık ;                  (* bu alt başlık sadece 6102'de var *)
+b6-no     = sp , 'no="' , kharf , kharf , kharf , '"' ;
+b6-başlık = sp , 'başlık="' , başlık , '"' ;
+
+maddeler  = ? TBD ? ;
+
+
 geçmişi   =  '<mvz-geçmişi>' , { g-ide } , '</mvz-geçmişi>' ;
 g-ide     =  '<mvz-ide' , g-attrib , '/>' ;      (* İptal/Değiş/Ekle *)
 g-attrib  =  g-no , g-idea , g-idelen , g-tarih ;
@@ -80,10 +120,13 @@ nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
 dgt   =  nzdgt | '0' ;
 num   =  nzdgt , { dgt } ;
 bharf =  'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
-bharf-x    = bharf | 'Â' | 'Î' | 'Û' ;
+bharf-x    = bharf | 'Â' | 'Î' | 'Û' | ',' ;
 bharf-sp-x = bharf-x | sp ;
+kharf = 'a' | 'b' | 'c' | 'ç' | 'd' | 'e' | 'f' | 'g' | 'ğ' | 'h' | 'ı' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'ö' | 'p' | 't' | 's' | 'ş' | 't' | 'u' | 'ü' | 'v' | 'y' | 'z' ;
 tarih      =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
 tarih-sep  = '/' | '.' ;
+başlık     = ? altbölüm/madde başlığı ? ;
+
 ```
 
 [^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
