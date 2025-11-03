@@ -102,18 +102,46 @@ b6-attrib = b6-no , b6-başlık ;                  (* bu alt başlık sadece 610
 b6-no     = sp , 'no="' , kharf , kharf , kharf , '"' ;
 b6-başlık = sp , 'başlık="' , başlık , '"' ;
 
-maddeler  = ? TBD ? ;
+maddeler  = madde , { madde } ;
+
+madde     = '<mvz-madde' , m-attrib , '>' , fıkralar , '</mvz-madde>';
+m-attrib  = m-no-x , m-başlık , [ m-tür ] , [ m-durum ] ;
+m-no-x    = sp , 'no="' , m-no , [ ' - ' , m-no ] ;
+m-no      = num , [ '/' , bharf ] ;
+m-başlık  = sp , 'başlık="' , [ başlık ] , '"' ;
+m-tür     = sp , 'tür="' , ( 'Ek' | 'Geçici' | 'Ek Geçici' | 'Mükerrer' ) , '"' ;
+m-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' ) , '"' ;
+
+fıkralar  = fıkra , { fıkra } ;
+
+fıkra     = '<mvz-fıkra' , f-attrib , '>' , metin-s , [ bentler ] , '</mvz-fıkra>' ;
+f-attrib  = f-no , [ f-durum ] ;
+f-no      = sp , 'no="' , num , '"' ;
+f-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' ) , '"' ;
+
+bentler   = bent , { bent } ;
+
+bent      = '<mvz-bent' , n-attrib , '>' , metin-s , [ altbentler ] , '</mvz-bent>' ;
+n-attrib  = n-no , [ n-durum ] ;
+n-no      = sp , 'no="' , kharf , { kharf } , '"' ;
+n-durum   = sp , 'durum="' ,  ( 'mülga' | 'iptal' ) , '"' ;
+
+altbentler = altbent , { altbent } ;
+
+altbent   = '<mvz-altbent', a-attrib , '>' , metin-s , '</mvz-altbent>' ;
+a-attrib  = a-no ;
+a-no      = sp , 'no="' , num , '"' ;
 
 
-geçmişi   =  '<mvz-geçmişi>' , { g-ide } , '</mvz-geçmişi>' ;
-g-ide     =  '<mvz-ide' , g-attrib , '/>' ;      (* İptal/Değiş/Ekle *)
-g-attrib  =  g-no , g-idea , g-idelen , g-tarih ;
-g-no      =  sp , 'no="' , num , '"' ;           (* sıra numarası *)
-g-idea    =  sp , 'idea="' , g-metin-i , '"' ;   (* iptal eden/değiştiren/ekleyen *)
-g-idelen  =  sp , 'idelen="' , g-metin-a , '"' ; (* iptal edilen/değiştirilen/eklenen *)
-g-tarih   =  sp , 'tarih="' , tarih , '"' ;      (* yürürlüğe giriş tarihi *)
-g-metin-i =  ? iptal eden/değiştiren/ekleyen kanun/KHK/AM kararı ? ;
-g-metin-a =  ? iptal edilen/değiştirilen/eklenen maddesi ? ;
+geçmişi   = '<mvz-geçmişi>' , { g-ide } , '</mvz-geçmişi>' ;
+g-ide     = '<mvz-ide' , g-attrib , '/>' ;      (* İptal/Değiş/Ekle *)
+g-attrib  = g-no , g-idea , g-idelen , g-tarih ;
+g-no      = sp , 'no="' , num , '"' ;           (* sıra numarası *)
+g-idea    = sp , 'idea="' , g-metin-i , '"' ;   (* iptal eden/değiştiren/ekleyen *)
+g-idelen  = sp , 'idelen="' , g-metin-a , '"' ; (* iptal edilen/değiştirilen/eklenen *)
+g-tarih   = sp , 'tarih="' , tarih , '"' ;      (* yürürlüğe giriş tarihi *)
+g-metin-i = ? iptal eden/değiştiren/ekleyen kanun/KHK/AM kararı ? ;
+g-metin-a = ? iptal edilen/değiştirilen/eklenen maddesi ? ;
 
 sp    =  ' ' , {' '} ;
 nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
@@ -126,7 +154,7 @@ kharf = 'a' | 'b' | 'c' | 'ç' | 'd' | 'e' | 'f' | 'g' | 'ğ' | 'h' | 'ı' | 'i'
 tarih      =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
 tarih-sep  = '/' | '.' ;
 başlık     = ? altbölüm/madde başlığı ? ;
-
+metin-s    = '<template>' , ? bir veya daha fazla tümceden oluşan tek satır metin ? , '</template>' ;
 ```
 
 [^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
