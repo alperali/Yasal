@@ -48,21 +48,21 @@ Metnin büyüklüğü ve "bozukluğu"na bağlı olarak bu işlem birkaç saat il
 EBNF notasyonunda belgenin örgün betimlenişi aşağıdaki gibidir:
 
 ```ebnf
-Kanun    =  künye , yasa , geçmişi ;
+Kanun     =  künye , yasa , geçmişi ;
 
-künye      =  '<mvz-künye' , k-attrib , '/>' ;
-k-attrib   =  k-tür , k-no , k-başlık , k-tarih , k-rgtarih , k-rgsayı , [k-rgmükerrer] , [kd-tertip] , [kd-cilt] , [kd-sayfa] ;
+künye     =  '<mvz-künye' , k-attrib , '/>' ;
+k-attrib  =  k-tür , k-no , k-başlık , k-tarih , k-rgtarih , k-rgsayı , [k-rgmükerrer] , [kd-tertip] , [kd-cilt] , [kd-sayfa] ;
 
-k-tür      =  sp , 'tür="kanun"' ;
-k-no       =  sp , 'no="' , num , '"' ;
-k-başlık   =  sp , 'başlık="' , bharf-x , { bharf-sp-x } , '"' ;   (* adı *)
-k-tarih    =  sp , 'tarih="' , tarih , '"' ;          (* kabul edildiği tarih *)
-k-rgtarih  =  sp , 'rgazete-tarih="' , tarih , '"' ;  (* yayınlandığı resmi gazetenin tarihi *)
-k-rgsayı   =  sp , 'rgazete-sayı="' , num , '"' ;     (* yayınlandığı resmi gazetenin sayısı *)
+k-tür     =  sp , 'tür="kanun"' ;
+k-no      =  sp , 'no="' , num , '"' ;
+k-başlık  =  sp , 'başlık="' , bharf-x , { bharf-sp-x } , '"' ;   (* adı *)
+k-tarih   =  sp , 'tarih="' , tarih , '"' ;          (* kabul edildiği tarih *)
+k-rgtarih =  sp , 'rgazete-tarih="' , tarih , '"' ;  (* yayınlandığı resmi gazetenin tarihi *)
+k-rgsayı  =  sp , 'rgazete-sayı="' , num , '"' ;     (* yayınlandığı resmi gazetenin sayısı *)
 k-rgmükerrer = sp , 'rgazete-mükerrer="' , nzdgt , '"' ;
-kd-tertip  =  sp , 'düstur-tertip="' , ( '3' | '4' | '5' ) , '"' ;
-kd-cilt    =  sp , 'düstur-cilt="' , num , '"' ;
-kd-sayfa   =  sp , 'düstur-sayfa="' , num , '"' ;
+kd-tertip =  sp , 'düstur-tertip="' , ( '3' | '4' | '5' ) , '"' ;
+kd-cilt   =  sp , 'düstur-cilt="' , num , '"' ;
+kd-sayfa  =  sp , 'düstur-sayfa="' , num , '"' ;
 
 yasa      = [ giriş ] , ( kitaplar | kısımlar | bölümler | maddeler ) ;
 
@@ -90,7 +90,7 @@ ab-b2ler  = ab-b2 , { ab-b2 } ;
 ab-b3ler  = ab-b3 , { ab-b3 } ;
 ab-b4ler  = ab-b4 , { ab-b4 } ;
 ab-b5ler  = ab-b5 , { ab-b5 } ;
-ab-b6ler  = ab-b6 , { ab-b6 } ;
+ab-b6lar  = ab-b6 , { ab-b6 } ;
 
 b1-attrib = b1-no , b1-başlık ;
 b1-no     = sp , 'no="' , ( 'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'İ' | 'J' | 'K' | 'L' ) , '"' ;  (* b2 ile karışmaması için I yok *)
@@ -157,15 +157,15 @@ g-tarih   = sp , 'tarih="' , tarih , '"' ;      (* yürürlüğe giriş tarihi *
 g-metin-i = ? iptal eden/değiştiren/ekleyen kanun/KHK/AM kararı ? ;
 g-metin-a = ? iptal edilen/değiştirilen/eklenen maddesi ? ;
 
-sp    =  ' ' , {' '} ;
-nzdgt =  '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
-dgt   =  nzdgt | '0' ;
-num   =  nzdgt , { dgt } ;
-bharf =  'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
+sp    = ' ' , {' '} ;
+nzdgt = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' ;
+dgt   = nzdgt | '0' ;
+num   = nzdgt , { dgt } ;
+bharf = 'A' | 'B' | 'C' | 'Ç' | 'D' | 'E' | 'F' | 'G' | 'Ğ' | 'H' | 'I' | 'İ' | 'J' | 'K' | 'L' | 'M' | 'N' | 'O' | 'Ö' | 'P' | 'R' | 'S' | 'Ş' | 'T' | 'U' | 'Ü' | 'V' | 'Y' | 'Z' ;
+kharf = 'a' | 'b' | 'c' | 'ç' | 'd' | 'e' | 'f' | 'g' | 'ğ' | 'h' | 'ı' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'ö' | 'p' | 't' | 's' | 'ş' | 't' | 'u' | 'ü' | 'v' | 'y' | 'z' ;
 bharf-x    = bharf | 'Â' | 'Î' | 'Û' | ',' ;
 bharf-sp-x = bharf-x | sp ;
-kharf = 'a' | 'b' | 'c' | 'ç' | 'd' | 'e' | 'f' | 'g' | 'ğ' | 'h' | 'ı' | 'i' | 'j' | 'k' | 'l' | 'm' | 'n' | 'o' | 'ö' | 'p' | 't' | 's' | 'ş' | 't' | 'u' | 'ü' | 'v' | 'y' | 'z' ;
-tarih      =  nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
+tarih      = nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
 tarih-sep  = '/' | '.' ;
 başlık     = ? altbölüm/madde başlığı ? ;
 metin-s    = '<template>' , ? bir veya daha fazla tümceden oluşan tek satır metin ? , '</template>' ;
