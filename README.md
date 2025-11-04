@@ -76,7 +76,7 @@ kitap     = '<mvz-kitap' , p-attrib , '>' , ( kısımlar | bölümler | ab-b1ler
 kısım     = '<mvz-kısım' , p-attrib , '>' , ( bölümler | ab-b1ler | maddeler ) , '</mvz-kısım>' ;
 bölüm     = '<' , ( 'mvz-bölüm' | 'mvz-bap' ) , p-attrib , '>' , ( fasıllar | ab-b1ler | maddeler ) , '</' , ( 'mvz-bölüm' | 'mvz-bap' ) , '>' ;
 fasıl     = '<' , ( 'mvz-ayırım' | 'mvz-fasıl' ) , p-attrib , '>' , ( ab-b1ler | maddeler ) , '</' , ( 'mvz-ayırım' | 'mvz-fasıl' ) , '>' ;
-p-attrib  = ? TBD ? ;
+p-attrib  = sp , 'no="' , p-num , '"' , sp , 'başlık="' , başlık , '"' ;
 
 ab-b1     = '<mvz-b1' , b1-attrib , '>' , ( ab-b2ler | ab-b3ler | ab-b4ler | ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b1>' ;
 ab-b2     = '<mvz-b2' , b2-attrib , '>' , ( ab-b3ler | ab-b4ler | ab-b5ler | ab-b6lar | maddeler ) , '</mvz-b2>' ;
@@ -167,8 +167,9 @@ bharf-x    = bharf | 'Â' | 'Î' | 'Û' | ',' ;
 bharf-sp-x = bharf-x | sp ;
 tarih      = nzdgt , [dgt] , tarih-sep , nzdgt , [dgt] , tarih-sep , nzdgt , 3 * dgt ;
 tarih-sep  = '/' | '.' ;
-başlık     = ? altbölüm/madde başlığı ? ;
+başlık     = ? kitap/kısım/bölüm/fasıl/altbölüm/madde başlığı ? ;
 metin-s    = '<template>' , ? bir veya daha fazla tümceden oluşan tek satır metin ? , '</template>' ;
+p-num = '1-BİRİNCİ' | '2-İKİNCİ' | '3-ÜÇÜNCÜ' | '4-DÖRDÜNCÜ' | '5-BEŞİNCİ' | '6-ALTINCI' | '7-YEDİNCİ' | '8-SEKİZİNCİ' | '9-DOKUZUNCU' | '10-ONUNCU' | '11-ONBİRİNCİ' | '12-ONİKİNCİ' | '13-ONÜÇÜNCÜ' | '14-ONDÖRDÜNCÜ' | '15-ONBEŞİNCİ' | '16-ONALTINCI' | '17-ONYEDİNCİ' | '18-ONSEKİZİNCİ' ;
 ```
 
 [^1]: Başta [5210](https://www.mevzuat.gov.tr/mevzuat?MevzuatNo=5210&MevzuatTur=21&MevzuatTertip=5) sayılı yönetmelikteki
