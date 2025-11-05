@@ -968,8 +968,12 @@ customElements.define('mvz-fıkra', class extends HTMLElement {
 
     if (this.no.match(/^[1A]$/) && this.parentElement.querySelector('div[data-madde]'))
       // condition'daki &&'den sonraki kısım, maddesi olmayan bir bölümün (mesela Anayasanın Girişi) ilk fıkrasında
-      // buraya girmeyip else kısmına düşmesi için  
-      this.parentElement.querySelector('div[data-madde]').insertAdjacentHTML('beforeend', `${f_no} ${fkr}`);
+      // buraya girmeyip else kısmına düşmesi için
+      if (this.parentElement.durum == 'işlenmiş')
+        // işlenmiş maddeye fıkra no vermesin, ve italik yapsın
+        this.parentElement.querySelector('div[data-madde]').insertAdjacentHTML('beforeend', `<em>${fkr}</em>`);
+      else
+        this.parentElement.querySelector('div[data-madde]').insertAdjacentHTML('beforeend', `${f_no} ${fkr}`);
     else
       this.insertAdjacentHTML('beforebegin', `<div class="mb-1">${f_no} ${fkr}</div`);
   }
