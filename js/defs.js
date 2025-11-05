@@ -104,6 +104,7 @@ const belgeler = new Map([
   [ 5543, { başlık: 'İSKÂN KANUNU'} ],
   [ 6191, { başlık: 'SÖZLEŞMELİ ERBAŞ VE ER KANUNU'} ],
   [ 5846, { başlık: 'FİKİR VE SANAT ESERLERİ KANUNU'} ],
+  [ 5355, { başlık: 'MAHALLÎ İDARE BİRLİKLERİ KANUNU'} ],
   [ 6356, { başlık: 'SENDİKALAR VE TOPLU İŞ SÖZLEŞMESİ KANUNU'} ],
   [ 4688, { başlık: 'KAMU GÖREVLİLERİ SENDİKALARI VE TOPLU SÖZLEŞME KANUNU'} ],
   [ 4483, { başlık: 'MEMURLAR VE DİĞER KAMU GÖREVLİLERİNİN YARGILANMASI HAKKINDA KANUN'} ],
