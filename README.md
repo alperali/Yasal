@@ -124,7 +124,7 @@ m-no-x    = sp , 'no="' , m-no , [ ' - ' , m-no ] ;
 m-no      = num , [ '/' , bharf ] ;
 m-başlık  = sp , 'başlık="' , [ başlık ] , '"' ;
 m-tür     = sp , 'tür="' , ( 'Ek' | 'Geçici' | 'Ek Geçici' | 'Mükerrer' ) , '"' ;
-m-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' ) , '"' ;
+m-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' | 'işlenmiş' ) , '"' ;
 
 fıkralar  = fıkra , { fıkra } ;
 
