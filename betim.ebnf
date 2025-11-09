@@ -128,5 +128,5 @@ metin-s    = '<template>' , ? bir veya daha fazla tümceden oluşan tek satır m
 p-num = '1-BİRİNCİ' | '2-İKİNCİ' | '3-ÜÇÜNCÜ' | '4-DÖRDÜNCÜ' | '5-BEŞİNCİ' | '6-ALTINCI' | '7-YEDİNCİ' | '8-SEKİZİNCİ' | '9-DOKUZUNCU' | '10-ONUNCU' | '11-ONBİRİNCİ' | '12-ONİKİNCİ' | '13-ONÜÇÜNCÜ' | '14-ONDÖRDÜNCÜ' | '15-ONBEŞİNCİ' | '16-ONALTINCI' | '17-ONYEDİNCİ' | '18-ONSEKİZİNCİ' ;
 
 Literal   = '<mvz-literal' , l-attrib , '>', l-içerik , '</mvz-literal>' ;
-l-attrib  = sp , 'konu="' , başlık , '"' , sp , 'tür="' , ( 'çizge' | 'resim' | 'harita' | 'çizelge' | 'dipnot' ) , '"' ;
+l-attrib  = sp , 'konu="' , başlık , '"' , sp , 'tür="' , ( 'çizge' | 'resim' | 'harita' | 'çizelge' | 'dipnot' | 'liste' ) , '"' ;
 l-içerik  = '<template>', ? HTML markup ? , '</template>' ;
