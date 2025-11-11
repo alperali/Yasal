@@ -966,7 +966,7 @@ customElements.define('mvz-fıkra', class extends HTMLElement {
     else
       fkr = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
 
-    if (this.no.match(/^[1A]$/) && this.parentElement.querySelector('div[data-madde]'))
+    if (this.no.match(/^[1AI]$/) && this.parentElement.querySelector('div[data-madde]'))
       // condition'daki &&'den sonraki kısım, maddesi olmayan bir bölümün (mesela Anayasanın Girişi) ilk fıkrasında
       // buraya girmeyip else kısmına düşmesi için
       if (this.parentElement.durum == 'işlenmiş')
