@@ -22,11 +22,20 @@
   </head>
   <body>
     <script>
-      navigator.serviceWorker.register('./servw.js');
       (localStorage.getItem('tema') ?? 'light') == 'dark' ? document.documentElement.setAttribute('data-bs-theme', 'dark'):void(0);
     </script>
-    <main></main>
-    <script src="./js/bootstrap.bundle.min.js"></script>
-    <script type="module" src="./js/lgir.js"></script>
+    <div class="container-fluid">
+      <div class="row mt-3">
+        <div class="col">
+          <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Sayfa yok.</h4>
+            <p>Bu sayfayı görüntülemek için internete bağlanmanız gereklidir. İnternetiniz aktifse sunucu tarafında bir sorun olabilir. Yüklendikten sonra çevrim dışı görüntülemeye devam edebilirsiniz.</p>
+            <hr>
+            <p class="mb-0"><a href="./index.html" class="alert-link">Geri dön</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- script src="./js/bootstrap.bundle.min.js"></script -->
   </body>
 </html>

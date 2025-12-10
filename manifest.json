@@ -1,4 +1,5 @@
-{
+{    
+    "lang": "tr",
     "name": "Yasal",
     "short_name": "Yasal",
     "description": "Kanunların web ortamında modern ve kullanıcı dostu gösterimini sağlar.",
@@ -8,7 +9,8 @@
     "icons": [
       {
         "src":  "./favicon.svg",
-        "type": "image/svg+xml"
+        "type": "image/svg+xml",
+        "purpose": "any"
       }
     ]
 }
