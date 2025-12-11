@@ -9,6 +9,7 @@ Kanunların web tabanlı olarak modern ve pratik gösterimini sağlayan bir çal
 * İçindekiler ve maddeler tablosu oluşturur (her iki tablo kullanıcı ile etkileşimlidir).
 * Türkçe yazım kurallarına uygun satır sonu otomatik heceleme yapar.
 * Favoriler listesi sağlar.
+* Hem çevrim içi hem de çevrim dışı kullanılabilir, kurulabilir (_Progressive Web App_).
 
 ## Teknik Özellikler
 
