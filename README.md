@@ -16,7 +16,7 @@ Kanunların web tabanlı olarak modern ve pratik gösterimini sağlayan bir çal
 HTML, CSS, Javascript, _web components_ kullanılmıştır.
 [Bootstrap](https://github.com/twbs/bootstrap) tanımlarından faydalanır.
 İçerik dinamik değil statik sayfalar halinde sunulur, veritabanı gerektirmez,
-tarayıcı içinde _light DOM_ bazlı _rendering_ yapar, modern ve hızlıdır.
+tarayıcı içinde _light tree_ bazlı _rendering_ yapar, modern ve hızlıdır.
 
 Kanun metinleri bu çalışmaya özgü tanımlanmış _custom HTML elements_ ile tek tek semantik işaretlenmiştir.
 Hiçbir semantik bilgi içermeyen orijinal kanun metinlerinde bu dönüşümü sağlamak zorlu ve zaman alıcı bir iştir.

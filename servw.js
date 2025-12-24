@@ -20,15 +20,18 @@ self.addEventListener('fetch', evt => {
     let resp;
     const c = await caches.open('Yasal-1');
     try {
+      // kullanıcı offline ise fetch() exception atar, catch() devreye girer
       resp = await fetch(evt.request);
       if (resp.ok) {
         c.put(evt.request, resp.clone());
         return resp;
       }
       else
+        // kullanıcı online fakat bir nedenle fetch() başarısız olduysa biz exception atarız, catch() devreye girer
         throw new Error('HTTP hata: '+resp.status);
     }
     catch(_geç) {
+      // varsa cache'ten sayfayı getir, yoksa hata sayfasını göster
       return (await c.match(evt.request) ?? await c.match('./yok.html'));  
     }
   
