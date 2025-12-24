@@ -3,6 +3,7 @@
     "name": "Yasal",
     "short_name": "Yasal",
     "description": "Kanunların web ortamında modern ve kullanıcı dostu gösterimini sağlar.",
+    "id": "/Yasal/index.html",
     "start_url": "./index.html",
     "display": "standalone",
     "orientation": "any",

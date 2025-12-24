@@ -20,21 +20,15 @@ self.addEventListener('fetch', evt => {
     let resp;
     const c = await caches.open('Yasal-1');
     try {
-      // kullanıcı offline ise fetch() exception atar, catch() devreye girer
+      // kullanıcı offline ise veya başka sebeple fetch() exception atarsa catch() devreye girer
       resp = await fetch(evt.request);
       if (resp.ok) {
+        // fetch() başarılı, gelen sayfa cache'te var mı?
         const p = await c.match(evt.request);
-        // if (!p || (p.headers.get('etag') != resp.headers.get('etag')))
-        if (!p) {
-          console.log(resp.url+' cache\'te yok.');
+
+        // gelen sayfa cache'te yok, veya var fakat cache'tekinden farklı (daha yeni), o zaman cache'e bunu koy
+        if (!p || (p.headers.get('etag') != resp.headers.get('etag')))
           c.put(evt.request, resp.clone());
-        }
-        else if (p.headers.get('etag') != resp.headers.get('etag')) {
-          console.log(resp.url+' cache\'te var, fakat aynı değil.');
-          c.put(evt.request, resp.clone());
-        }
-        else
-          console.log(resp.url+' cache te var, ve değişmemiş.');
 
         return resp;
       }
