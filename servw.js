@@ -25,6 +25,7 @@ self.addEventListener('fetch', evt => {
       if (resp.ok) {
         const p = await c.match(evt.request);
         if (p) console.log (`${p.headers.get('etag')} -- ${resp.headers.get('etag')}`);
+        else console.log('yok.');
         c.put(evt.request, resp.clone());
         return resp;
       }
