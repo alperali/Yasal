@@ -24,9 +24,11 @@ self.addEventListener('fetch', evt => {
       resp = await fetch(evt.request);
       if (resp.ok) {
         const p = await c.match(evt.request);
-        if (p) console.log (`${p.headers.get('etag')} -- ${resp.headers.get('etag')}`);
-        else console.log('yok.');
-        c.put(evt.request, resp.clone());
+        if (!p || (p.headers.get('etag') != resp.headers.get('etag')))
+          c.put(evt.request, resp.clone());
+        else
+          console.log(resp.url+' cache te var, ve değişmemiş.');
+
         return resp;
       }
       else
