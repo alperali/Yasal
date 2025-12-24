@@ -23,6 +23,8 @@ self.addEventListener('fetch', evt => {
       // kullanıcı offline ise fetch() exception atar, catch() devreye girer
       resp = await fetch(evt.request);
       if (resp.ok) {
+        const p = await c.match(evt.request);
+        if (p) console.log (`${p.headers.get('etag')} -- ${resp.headers.get('etag')}`);
         c.put(evt.request, resp.clone());
         return resp;
       }
