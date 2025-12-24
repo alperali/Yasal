@@ -24,8 +24,15 @@ self.addEventListener('fetch', evt => {
       resp = await fetch(evt.request);
       if (resp.ok) {
         const p = await c.match(evt.request);
-        if (!p || (p.headers.get('etag') != resp.headers.get('etag')))
+        // if (!p || (p.headers.get('etag') != resp.headers.get('etag')))
+        if (!p) {
+          console.log(resp.url+' cache\'te yok.');
           c.put(evt.request, resp.clone());
+        }
+        else if (p.headers.get('etag') != resp.headers.get('etag')) {
+          console.log(resp.url+' cache\'te var, fakat aynı değil.');
+          c.put(evt.request, resp.clone());
+        }
         else
           console.log(resp.url+' cache te var, ve değişmemiş.');
 
