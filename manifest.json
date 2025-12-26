@@ -27,17 +27,21 @@
     "screenshots": [
       {
         "src": "img/dtop1.png",
+        "sizes": "2068x1496",
         "form_factor": "wide"
       },
       {
         "src": "img/dtop2.png",
+        "sizes": "2068x1496",
         "form_factor": "wide"
       },
       {
-        "src": "img/mobil1.png"
+        "src": "img/mobil1.png",
+        "sizes": "1110x1496"
       },
       {
-        "src": "img/mobil2.png"
+        "src": "img/mobil2.png",
+        "sizes": "1110x1496"
       }
     ]
 }
