@@ -23,5 +23,21 @@
         "type": "image/svg+xml",
         "purpose": "any"
       }
+    ],
+    "screenshots": [
+      {
+        "src": "img/dtop1.png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "img/dtop2.png",
+        "form_factor": "wide"
+      },
+      {
+        "src": "img/mobil1.png"
+      },
+      {
+        "src": "img/mobil2.png"
+      }
     ]
 }
