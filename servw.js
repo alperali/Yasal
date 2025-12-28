@@ -4,6 +4,8 @@
  * All Rights Reserved. This is not free software.
  *---------------------------------------------------------------------------*/
 
+const _güncelle = 1;  // bu sabitin gerekçesi için dosya sonuna başvurunuz.
+
 self.addEventListener('install', evt => {
   // self.skipWaiting();
   evt.waitUntil( (async () => {
@@ -43,3 +45,11 @@ self.addEventListener('fetch', evt => {
   
   })() );
 });
+
+/*  Açıklama:
+Sunucuya erişilemediğinde gösterilecek sayfaları cache'e "install" olayında koyabiliyoruz,
+yok.html böyle bir sayfadır. Bu sayfada oluşabilecek bir değişikliği cache'e sokmanın yolu
+service worker'ı "install" olayına mecbur etmektir. Bunun için worker dosyasında bir değişiklik
+olması lazım. Bu amaçla bir sabit tanımlıyor ve başka değişiklik olmamış service worker'da
+"install" olayını tetiklemek için bu sabitin değerini değiştiriyoruz (örneğin, 1 arttır).
+*/
