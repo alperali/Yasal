@@ -4,7 +4,6 @@
     "short_name": "Yasal",
     "description": "Kanunların web ortamında modern ve kullanıcı dostu gösterimini sağlar.",
     "categories": ["books", "education", "mevzuat"],
-    "background_color": "#212529",
     "id": "/Yasal/index.html",
     "start_url": "./index.html",
     "display": "standalone",
