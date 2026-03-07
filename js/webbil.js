@@ -875,7 +875,7 @@ customElements.define('mvz-madde', class extends HTMLElement {
 
   connectedCallback() {
     const elem = 'madde';
-    const prfx = this.tür ?? '';
+    const prfx = this.tür?.replace(/[ ]/g, '') ?? '';  // 'Ek Geçici' türündeki boşluk, daha sonra querySelector'da hataya neden oluyor, aşağıda
 
     let toctag;
     let parenttoctag = this.parentElement.getAttribute('toc-tag');
@@ -1028,7 +1028,7 @@ customElements.define('mvz-altbent', class extends HTMLElement {
   connectedCallback() {
     const st = { 'iptal': 'İptal', 'mülga': 'Mülga'};
     let abnt;
-    const ab_no = this.no == '0' ? '' : `<strong>${this.no}</strong>) `;
+    const ab_no = this.no == '0' ? '' : `<strong>${this.no}</strong>${this.no.endsWith('.')?'':')'} `;  // 1. gibi rakam ve nokta olarak girilmiş kuraldışı altbent no.lar için ) koymasın diye endsWith() kısmı
 
     if (this.durum?.match(/mülga|iptal/))
       abnt = `<em>${st[this.durum]}</em>`;

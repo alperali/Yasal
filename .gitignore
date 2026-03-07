@@ -1,4 +1,6 @@
 .DS_Store
 *.code-workspace
 *.mjs
-w/
+w/*
+!w/histopars.mjs
+!w/parse.mjs
