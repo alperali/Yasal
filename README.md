@@ -132,7 +132,7 @@ fıkralar  = fıkra , { fıkra } ;
 fıkra     = '<mvz-fıkra' , f-attrib , '>' , metin-s , [ bentler ] , '</mvz-fıkra>' ;
 f-attrib  = f-no , [ f-durum ] ;
 f-no      = sp , 'no="' , num , '"' ;
-f-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' ) , '"' ;
+f-durum   = sp , 'durum="' , ( 'mülga' | 'iptal' | 'işlenmiş' ) , '"' ;
 
 bentler   = bent , { bent } ;
 

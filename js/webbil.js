@@ -963,6 +963,8 @@ customElements.define('mvz-fıkra', class extends HTMLElement {
 
     if (this.durum?.match(/mülga|iptal/))
       fkr = `<em>${st[this.durum]}</em>`;
+    else if (this.durum == 'işlenmiş')
+      fkr = `<em class="hcl">${this.querySelector('template').content.textContent}</em>`;
     else
       fkr = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
 
