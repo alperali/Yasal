@@ -1004,6 +1004,8 @@ customElements.define('mvz-bent', class extends HTMLElement {
 
     if (this.durum?.match(/mülga|iptal/))
       bnt = `<em>${st[this.durum]}</em>`;
+    else if (this.durum == "işlenmiş")
+      bnt = `<em class="hcl">${this.querySelector('template').content.textContent}</em>`;
     else
       bnt = `<span class="hcl">${this.querySelector('template').content.textContent}</span>`;
 

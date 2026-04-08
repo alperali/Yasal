@@ -23,7 +23,7 @@
   <body>
     <script>
       navigator.serviceWorker.register('./servw.js');
-      (localStorage.getItem('tema') ?? 'light') == 'dark' ? document.documentElement.setAttribute('data-bs-theme', 'dark'):void(0);
+      localStorage.getItem('tema') == 'dark' && document.documentElement.setAttribute('data-bs-theme', 'dark');
     </script>
     <main></main>
     <script src="./js/bootstrap.bundle.min.js"></script>
