@@ -139,7 +139,7 @@ bentler   = bent , { bent } ;
 bent      = '<mvz-bent' , n-attrib , '>' , metin-s , [ altbentler ] , '</mvz-bent>' ;
 n-attrib  = n-no , [ n-durum ] ;
 n-no      = sp , 'no="' , kharf , { kharf } , '"' ;
-n-durum   = sp , 'durum="' ,  ( 'mülga' | 'iptal' ) , '"' ;
+n-durum   = sp , 'durum="' ,  ( 'mülga' | 'iptal' | 'işlenmiş' ) , '"' ;
 
 altbentler = altbent , { altbent } ;
 
