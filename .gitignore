@@ -4,3 +4,10 @@
 w/*
 !w/histopars.mjs
 !w/parse.mjs
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
