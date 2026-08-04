@@ -1024,16 +1024,7 @@
           <template>Maddi vakıalar, tek başlarına tespit davasının konusunu oluşturamaz.</template>
         </mvz-fıkra>
       </mvz-madde>
-      <mvz-madde no="107" başlık="Belirsiz alacak davası">
-        <mvz-fıkra no="1">
-          <template>Davanın açıldığı tarihte alacağın miktarını yahut değerini tam ve kesin olarak belirleyebilmesinin kendisinden beklenemeyeceği veya bunun imkânsız olduğu hâllerde, alacaklı, hukuki ilişkiyi ve asgari bir miktar ya da değeri belirtmek suretiyle belirsiz alacak davası açabilir.</template>
-        </mvz-fıkra>
-        <mvz-fıkra no="2">
-          <template>Karşı tarafın verdiği bilgi veya tahkikat sonucu alacağın miktarı veya değerinin tam ve kesin olarak belirlenebilmesi mümkün olduğunda, hâkim tarafından tahkikat sona ermeden verilecek iki haftalık kesin süre içinde davacı, iddianın genişletilmesi yasağına tabi olmaksızın talebini tam ve kesin olarak belirleyebilir. Aksi takdirde dava, talep sonucunda belirtilen miktar veya değer üzerinden görülüp karara bağlanır.</template>
-        </mvz-fıkra>
-        <mvz-fıkra no="3" durum="mülga">
-          <template></template>
-        </mvz-fıkra>
+      <mvz-madde no="107" başlık="Belirsiz alacak davası" durum="mülga">
       </mvz-madde>
       <mvz-madde no="108" başlık="İnşaî dava">
         <mvz-fıkra no="1">
@@ -1055,6 +1046,9 @@
         </mvz-fıkra>
         <mvz-fıkra no="3">
           <template>Dava açılırken, talep konusunun kalan kısmından açıkça feragat edilmiş olması hâli dışında, kısmi dava açılması, talep konusunun geri kalan kısmından feragat edildiği anlamına gelmez.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="4">
+          <template>Alacağın sadece bir kısmının dava edildiği durumlarda talep konusu, aynı davada bir defaya mahsus olmak üzere iddianın genişletilmesi yasağına tabi olmaksızın tahkikatın sona ermesine kadar artırılabilir. Bu durumda zamanaşımı, artırılan kısım bakımından da dava tarihinden itibaren kesilmiş sayılır.</template>
         </mvz-fıkra>
       </mvz-madde>
       <mvz-madde no="110" başlık="Davaların yığılması">
@@ -1495,6 +1489,9 @@
           <mvz-fıkra no="2">
             <template>Taraflara gönderilecek davetiyede, belirlenen gün ve saatte geçerli bir özrü olmadan mahkemede hazır bulunmadıkları takdirde, duruşmaya yokluklarında devam edileceği ve yapılan işlemlere itiraz edemeyecekleri, tahkikatın sona erdiği duruşmada sözlü yargılamaya geçileceği, sözlü yargılama için duruşmanın ertelenmesi hâlinde taraflara ayrıca davetiye gönderilmeyeceği ve 150 nci madde hükmü saklı kalmak kaydıyla, yokluklarında hüküm verileceği bildirilir.</template>
           </mvz-fıkra>
+          <mvz-fıkra no="3">
+            <template>Duruşmalar arasındaki süre üç aydan daha uzun olamaz. İşin niteliği gereği bilirkişi incelemesinin uzaması veya istinabe yoluyla tahkikat işlemlerinin yürütülmesi gibi zorunlu hâllerde, hâkim gerekçesini belirterek daha uzun bir süre belirleyebilir.</template>
+          </mvz-fıkra>
         </mvz-madde>
         <mvz-madde no="148" başlık="Mahkemenin çalışma zamanı">
           <mvz-fıkra no="1">
@@ -1512,9 +1509,12 @@
             <template>Mahkeme, tarafların üzerinde serbestçe tasarruf edemeyecekleri dava ve işlerde ilgililerin, aynı anda ses ve görüntü nakledilmesi yoluyla bulundukları yerden dinlenilmesine resen karar verebilir.</template>
           </mvz-fıkra>
           <mvz-fıkra no="4">
+            <template>Ses ve görüntü nakledilmesi yoluyla bulundukları yerden duruşmaya katılmasına karar verilenler hakkında, 154 üncü maddenin üçüncü fıkrasının (ç) bendinde belirtilen ikrar, yeminin edası, davanın geri alınmasına muvafakat, davadan feragat, davayı kabul ile sulh olma hâlleri hariç olmak üzere, elle atılan imzaya ilişkin hükümler uygulanmaz.</template>
+          </mvz-fıkra>  
+          <mvz-fıkra no="5">
             <template>Mahkeme, fiilî engel veya güvenlik sebebiyle duruşmanın il sınırları içinde başka bir yerde yapılmasına, yargı çevresi içinde yer aldığı bölge adliye mahkemesi adalet komisyonunun uygun görüşünü alarak karar verebilir.</template>
           </mvz-fıkra>
-          <mvz-fıkra no="5">
+          <mvz-fıkra no="6">
             <template>Bu maddenin uygulanmasına ilişkin usul ve esaslar yönetmelikte belirlenir.</template>
           </mvz-fıkra>
         </mvz-madde>
@@ -1703,7 +1703,7 @@
       <mvz-ayırım no="4-DÖRDÜNCÜ" başlık="Davaların Birleştirilmesi ve Ayrılması">
         <mvz-madde no="166" başlık="Davaların birleştirilmesi">
           <mvz-fıkra no="1">
-            <template>Aynı yargı çevresinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde açılmış davalar, aralarında bağlantı bulunması durumunda, davanın her aşamasında, talep üzerine veya kendiliğinden ilk davanın açıldığı mahkemede birleştirilebilir. Birleştirme kararı, ikinci davanın açıldığı mahkemece verilir ve bu karar, diğer mahkemeyi bağlar.</template>
+            <template>Aynı yargı çevresinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde açılmış davalar, aralarında bağlantı bulunması durumunda, davanın her aşamasında, talep üzerine veya kendiliğinden ilk davanın açıldığı mahkemede birleştirilebilir. İlk davanın açıldığı mahkeme birleştirme kararının kesinleşmesinden itibaren bununla bağlıdır.</template>
           </mvz-fıkra>
           <mvz-fıkra no="2">
             <template>Davalar, ayrı yargı çevrelerinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde açılmış ise bağlantı sebebiyle birleştirme ikinci davanın açıldığı mahkemeden talep edilebilir. Birinci davanın açıldığı mahkeme, talebin kabulü ile davaların birleştirilmesine ilişkin kararın kesinleşmesinden itibaren, bununla bağlıdır.</template>
@@ -1725,8 +1725,11 @@
         </mvz-madde>
         <mvz-madde no="168" başlık="Kanun yolları">
           <mvz-fıkra no="1">
-            <template>Aynı yargı çevresinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde görülmekte olan davalar yönünden verilen birleştirme ve ayırma hususundaki ilk derece mahkemesi kararlarına karşı istinaf yoluna; bölge adliye mahkemesi kararları hakkında ise temyiz yoluna, ancak hükümle birlikte gidilebilir. Şu kadar ki, bu husus tek başına, bölge adliye mahkemesinde hükmün kaldırılarak esastan incelenme; Yargıtayda ise bozma sebebi teşkil etmez.</template>
+            <template>Aynı yargı çevresinde yer alan aynı düzey ve sıfattaki hukuk mahkemelerinde görülmekte olan davalar yönünden verilen birleştirme kararına karşı sadece istinaf yoluna başvurulabilir.</template>
           </mvz-fıkra>
+          <mvz-fıkra no="2">
+            <template>İlk derece mahkemelerince verilen ayırma kararlarına karşı istinaf yoluna; bölge adliye mahkemelerinin birleştirme ve ayırma kararları hakkında ise temyiz yoluna, ancak hükümle birlikte gidilebilir. Şu kadar ki, bu husus tek başına, bölge adliye mahkemesinde hükmün kaldırılarak esastan incelenme; Yargıtayda ise bozma sebebi teşkil etmez.</template>
+          </mvz-fıkra>  
         </mvz-madde>
       </mvz-ayırım>
       <mvz-ayırım no="5-BEŞİNCİ" başlık="İsticvap">
@@ -3370,8 +3373,8 @@
         <mvz-fıkra no="1">
           <template>Kendisi ve ailesinin geçimini önemli ölçüde zor duruma düşürmeksizin, gereken yargılama veya takip giderlerini kısmen veya tamamen ödeme gücünden yoksun olan kimseler, iddia ve savunmalarında, geçici hukuki korunma taleplerinde ve icra takibinde, taleplerinin açıkça dayanaktan yoksun olmaması kaydıyla adli yardımdan yararlanabilirler.</template>
         </mvz-fıkra>
-        <mvz-fıkra no="2">
-          <template>Kamuya yararlı dernek ve vakıflar, iddia ve savunmalarında haklı göründükleri ve mali açıdan zor duruma düşmeden gerekli giderleri kısmen veya tamamen ödeyemeyecek durumda oldukları takdirde adli yardımdan yararlanabilirler.</template>
+        <mvz-fıkra no="2" durum="iptal">
+          <template></template>
         </mvz-fıkra>
         <mvz-fıkra no="3">
           <template>Yabancıların adli yardımdan yararlanabilmeleri ayrıca karşılıklılık şartına bağlıdır.</template>
@@ -3747,10 +3750,10 @@
         <mvz-fıkra no="1">
           <template>Bölge adliye mahkemelerinin aşağıdaki kararları hakkında temyiz yoluna başvurulamaz:</template>
           <mvz-bent no="a">
-            <template>Miktar veya değeri kırk bin Türk Lirasını  geçmeyen davalara ilişkin kararlar.</template>
+            <template>Miktar veya değeri kırk bin Türk Lirasını (bu tutar dâhil) geçmeyen davalara ilişkin kararlar.</template>
           </mvz-bent>
           <mvz-bent no="b">
-            <template>Kira ilişkisinden doğan ve miktar veya değeri itibarıyla temyiz edilebilen alacak davaları ile kira ilişkisinden doğan diğer davalardan üç aylık kira tutarı temyiz sınırının üzerinde olanlar hariç olmak üzere 4 üncü maddede gösterilen davalar ile  özel kanunlarda sulh hukuk mahkemesinin görevine girdiği belirtilen davalarla ilgili kararlar.</template>
+            <template>Kira ilişkisinden doğan ve miktar veya değeri itibarıyla temyiz edilebilen alacak davaları ile kira ilişkisinden doğan diğer davalardan üç aylık kira tutarı temyiz sınırının üzerinde olanlar hariç olmak üzere 4 üncü maddede gösterilen davalar ile (23/6/1965 tarihli ve 634 sayılı Kat Mülkiyeti Kanunundan doğup taşınmazın aynına ilişkin olan davalar hariç) özel kanunlarda sulh hukuk mahkemesinin görevine girdiği belirtilen davalarla ilgili kararlar.</template>
           </mvz-bent>
           <mvz-bent no="c">
             <template>Yargı çevresi içinde bulunan ilk derece mahkemelerinin görev ve yetkisi hakkında verilen kararlar ile yargı yeri belirlenmesine ilişkin kararlar.</template>
@@ -3773,6 +3776,15 @@
         </mvz-fıkra>
         <mvz-fıkra no="2">
           <template>Birinci fıkranın (a) bendindeki kararlarda alacağın bir kısmının dava edilmiş olması durumunda, kırk bin Türk Liralık kesinlik sınırı alacağın tamamına göre belirlenir. Alacağın tamamının dava edilmiş olması hâlinde, kararda asıl talebinin kabul edilmeyen bölümü kırk bin Türk Lirasını geçmeyen tarafın temyiz hakkı yoktur. Ancak, karşı taraf temyiz yoluna başvurduğu takdirde, diğer taraf da düzenleyeceği cevap dilekçesiyle kararı temyiz edebilir.</template>
+        </mvz-fıkra>
+        <mvz-fıkra no="3">
+          <template>Bölge adliye mahkemesinin yaptığı inceleme sonucunda istinaf başvurusunun kısmen veya tamamen kabul edilerek yeniden esas hakkında verilen kararın kabul edilen ya da reddedilen kısmının, miktar veya değeri itibarıyla 341 inci maddenin ikinci fıkrasında düzenlenen parasal sınırın üzerinde olması halinde temyiz edilebilir. Şu kadar ki;</template>
+          <mvz-bent no="a">
+            <template>Miktar veya değeri itibarıyla birinci fıkrada belirtilen temyiz sınırının altında kalan bölge adliye mahkemesinin yeniden esas hakkında verdiği karar ile ilk derece mahkemesi kararı arasındaki farkın, miktar veya değeri itibarıyla 341 inci maddenin ikinci fıkrasında belirtilen parasal sınırı geçmemesi halinde bu karara karşı temyiz yoluna başvurulamaz.</template>
+          </mvz-bent>
+          <mvz-bent no="b">
+            <template>Miktar veya değeri itibarıyla birinci fıkrada belirtilen temyiz sınırının altında kalan bölge adliye mahkemesinin yeniden esas hakkında verdiği kararın, sadece yargılama gideri veya vekâlet ücretine ilişkin olması halinde bu karara karşı temyiz yoluna başvurulamaz.</template>
+          </mvz-bent>
         </mvz-fıkra>
       </mvz-madde>
       <mvz-madde no="363" başlık="Kanun yararına temyiz">
@@ -5245,4 +5257,10 @@
     <mvz-ide no="27" idea="7499" idelen="43, 44, 337, 346, 398" tarih="1/6/2024" />
     <mvz-ide no="28" idea="7531" idelen="Ek Madde 1" tarih="14/11/2024" />
     <mvz-ide no="29" idea="7550" idelen="Ek Madde 1" tarih="4/6/2025" />
+    <mvz-ide no="30" idea="Anayasa Mahkemesinin 24/9/2024 Tarihli ve E: 2024/78, K: 2024/164 Sayılı Kararı" idelen="334" tarih="Yayımı tarihinden dokuz ay sonra (21/8/2025)" />
+    <mvz-ide no="31" idea="Anayasa Mahkemesinin 17/6/2025 tarihli ve E.: 2024/237; K.: 2025/137 sayılı Kararı" idelen="166" tarih="25/9/2025" />
+    <mvz-ide no="32" idea="Anayasa Mahkemesinin 25/12/2024 tarihli ve E: 2024/29, K: 2024/226 sayılı Kararı" idelen="326" tarih="Kararın Resmî Gazete’de yayımlanmasından başlayarak dokuz ay sonra
+(14/12/2025)" />
+    <mvz-ide no="33" idea="Anayasa Mahkemesinin 26/2/2026 tarihli ve E.: 2026/49, K.: 2026/48 sayılı Kararı" idelen="362" tarih="21/5/2026" />
+    <mvz-ide no="24" idea="7589" idelen="107, 109, 147, 166, 168, 362|149" tarih="31/7/2026|yayımı tarihinden itibaren üç ay sonra (31/10/2026)" />
   </mvz-geçmişi>
