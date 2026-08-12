@@ -1,0 +1,4 @@
+css/style.css linguist-detectable -linguist-documentation -linguist-vendored
+js/* linguist-detectable -linguist-documentation -linguist-vendored
+js/bootstrap.bundle.min.js linguist-vendored
+w/*.mjs linguist-detectable -linguist-documentation -linguist-vendored
