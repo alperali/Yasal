@@ -22,7 +22,8 @@
       {
         "src":  "./favicon.svg",
         "type": "image/svg+xml",
-        "purpose": "any"
+        "purpose": "any",
+        "sizes": "any"
       }
     ],
     "screenshots": [
