@@ -4,8 +4,9 @@
     "short_name": "Yasal",
     "description": "Kanunların web ortamında modern ve kullanıcı dostu gösterimini sağlar.",
     "categories": ["books", "education", "mevzuat"],
-    "id": "/Yasal/index.html",
-    "start_url": "./index.html",
+    "id": "/Yasal/",
+    "start_url": "./",
+    "scope": "./",
     "display": "standalone",
     "orientation": "any",
     "icons": [
@@ -33,11 +34,13 @@
       },
       {
         "src": "img/mobil1.png",
-        "sizes": "1110x1496"
+        "sizes": "1110x1496",
+        "form_factor": "narrow"
       },
       {
         "src": "img/mobil2.png",
-        "sizes": "1124x1496"
+        "sizes": "1124x1496",
+        "form_factor": "narrow"
       }
     ]
 }
