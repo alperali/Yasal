@@ -137,7 +137,8 @@ customElements.define('mvz-giriş', class extends HTMLElement {
 
 });
 
-customElements.define('mvz-kitap', class extends HTMLElement {      // aşağıda 'KİTAP' stringi ve elem const hariç Kısım ile aynı
+class Ortak extends HTMLElement {
+
   static observedAttributes = ['no', 'başlık'];
 
   constructor() {
@@ -153,17 +154,14 @@ customElements.define('mvz-kitap', class extends HTMLElement {      // aşağıd
   }
 
   connectedCallback() {
-    const elem='kitap';
     
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-kitap text-center mt-5 mb-1">${this.no.substring(this.no.indexOf('-')+1)} KİTAP</div>
-                      <div class="h5 fw-bold text-center">${this.başlık}</div>`);
+    this.insertAdjacentHTML('afterbegin', this._parça());
 
     let toctag;
     let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
+    if (parenttoctag && this.parentElement.querySelector(`mvz-${this.elem}`) === this) {
         // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
+        toctag = `${parenttoctag}_${this.elem}-${this._no_getir()}`;
         const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
         e.setAttribute('href', `#${parenttoctag}`);
         e.setAttribute('data-bs-toggle', 'collapse');
@@ -179,7 +177,7 @@ customElements.define('mvz-kitap', class extends HTMLElement {      // aşağıd
       // bu ilk child değil, mevcut collapsible listenin sonuna ekle
       // veya
       // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
+      toctag = `${parenttoctag}_${this.elem}-${this._no_getir()}`;
       const litm = this._build_li(toctag);
       document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
     }
@@ -188,667 +186,175 @@ customElements.define('mvz-kitap', class extends HTMLElement {      // aşağıd
   }
 
   _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-kitap">
+    return `<li class="list-group-item ${this.stil_txt3}">
               <a href="javascript:void(0)"
                 class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
+                data-toc-tag="${toctag}">${this._no_getir()}. <span class="hcl2">${this.başlık}</span></a>
             </li>`;
   }
-});
 
-customElements.define('mvz-kısım', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
+}
 
-  constructor() {
-    super();
-    // console.log('Kısım ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem='kısım';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-kısım text-center mt-5 mb-1">${this.no.substring(this.no.indexOf('-')+1)} KISIM</div>
-                      <div class="h5 fw-bold text-center">${this.başlık}</div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-kısım">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
-  }
-});
-
-customElements.define('mvz-bölüm', class extends HTMLElement {      // aşağıda 'BÖLÜM' stringi ve elem const hariç Kısım ile aynı 
-  static observedAttributes = ['no', 'başlık'];
-
+class Başlık extends Ortak {
   constructor() {
     super();
   }
 
-  get no() {
-    return this.getAttribute('no');
+  _parça() {
+    return `<div class="h5 fw-bold ${this.stil_txt} mb-1 text-center">${this.no.substring(this.no.indexOf('-')+1)} ${this.başlık_txt}</div>
+            <div class="h5 fw-bold ${this.stil_txt2} text-center">${this.başlık}</div>`;
   }
 
-  get başlık() {
-    return this.getAttribute('başlık');
+  _no_getir() {
+    return this.no.substring(0, this.no.indexOf('-'));
   }
+}
 
-  connectedCallback() {
-    const elem = 'bölüm';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-bölüm-bap bölüm-bap-fs text-center mt-4 mb-1">${this.no.substring(this.no.indexOf('-')+1)} BÖLÜM</div>
-                      <div class="h5 fw-bold bölüm-bap-fs text-center">${this.başlık}</div>`);
-  
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-  
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-bölüm-bap">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
-  }
-});
-
-customElements.define('mvz-bap', class extends HTMLElement {      // aşağıda 'BAP' stringi ve elem const hariç Bölüm ile aynı 
-  static observedAttributes = ['no', 'başlık'];
-
+class Altbaşlık extends Ortak {
   constructor() {
     super();
   }
 
-  get no() {
-    return this.getAttribute('no');
+  _parça() {
+    return `<div class="h6 ${this.stil_txt}"><em>${this.no}. ${this.başlık}</em></div>`;
   }
 
-  get başlık() {
-    return this.getAttribute('başlık');
+  _no_getir() {
+    return this.no;
   }
+}
 
-  connectedCallback() {
-    const elem = 'bap';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-bölüm-bap bölüm-bap-fs text-center mt-4 mb-1">${this.no.substring(this.no.indexOf('-')+1)} BAP</div>
-                      <div class="h5 fw-bold bölüm-bap-fs text-center">${this.başlık}</div>`);
-  
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-  
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-bölüm-bap">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
-  }
-});
-
-customElements.define('mvz-ayırım', class extends HTMLElement {      // aşağıda 'AYIRIM' stringi ve const elem hariç Bölüm ile aynı 
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-kitap', class extends Başlık {
   constructor() {
     super();
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'ayırım';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-ayırım-fasıl ayırım-fasıl-fs text-center mt-4 mb-1">${this.no.substring(this.no.indexOf('-')+1)} AYIRIM</div>
-                      <div class="h5 fw-bold ayırım-fasıl-fs text-center">${this.başlık}</div>`);
-  
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-  
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-ayırım-fasıl">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'kitap';
+    this.stil_txt = 'stil-kitap mt-5';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-kitap';
+    this.başlık_txt = 'KİTAP';
   }
 });
 
-customElements.define('mvz-fasıl', class extends HTMLElement {      // aşağıda 'FASIL' stringi ve const elem hariç Bölüm ile aynı 
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-kısım', class extends Başlık {
   constructor() {
     super();
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'fasıl';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h5 fw-bold stil-ayırım-fasıl ayırım-fasıl-fs text-center mt-4 mb-1">${this.no.substring(this.no.indexOf('-')+1)} FASIL</div>
-                      <div class="h5 fw-bold ayırım-fasıl-fs text-center">${this.başlık}</div>`);
-  
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no.substring(0, this.no.indexOf('-'))}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-  
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-ayırım-fasıl">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no.substring(0, this.no.indexOf('-'))}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'kısım';
+    this.stil_txt = 'stil-kısım mt-5';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-kısım';
+    this.başlık_txt = 'KISIM';
   }
 });
 
-customElements.define('mvz-b1', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-bölüm', class extends Başlık {
   constructor() {
     super();
-    // console.log('B1 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b1';
-    
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 fw-bold stil-b1 mt-4"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-b1">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'bölüm';
+    this.stil_txt = 'stil-bölüm-bap bölüm-bap-fs mt-4';
+    this.stil_txt2 = 'bölüm-bap-fs';
+    this.stil_txt3 = 'toc-stil-bölüm-bap';
+    this.başlık_txt = 'BÖLÜM';
   }
 });
 
-customElements.define('mvz-b2', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-bap', class extends Başlık {
   constructor() {
     super();
-    // console.log('B2 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b2';
-
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 mt-3 stil-b2"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-b2">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'bap';
+    this.stil_txt = 'stil-bölüm-bap bölüm-bap-fs mt-4';
+    this.stil_txt2 = 'bölüm-bap-fs';
+    this.stil_txt3 = 'toc-stil-bölüm-bap';
+    this.başlık_txt = 'BAP';
   }
 });
 
-customElements.define('mvz-b3', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-ayırım', class extends Başlık {
   constructor() {
     super();
-    // console.log('B3 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b3';
-
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 mt-3 stil-b3"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-b3">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'ayırım';
+    this.stil_txt = 'stil-ayırım-fasıl ayırım-fasıl-fs mt-4';
+    this.stil_txt2 = 'ayırım-fasıl-fs';
+    this.stil_txt3 = 'toc-stil-ayırım-fasıl';
+    this.başlık_txt = 'AYIRIM';
   }
 });
 
-customElements.define('mvz-b4', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-fasıl', class extends Başlık {
   constructor() {
     super();
-    // console.log('B4 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b4';
-
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 mt-3 stil-b4"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item toc-stil-b4">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'fasıl';
+    this.stil_txt = 'stil-ayırım-fasıl ayırım-fasıl-fs mt-4';
+    this.stil_txt2 = 'ayırım-fasıl-fs';
+    this.stil_txt3 = 'toc-stil-ayırım-fasıl';
+    this.başlık_txt = 'FASIL';
   }
 });
 
-customElements.define('mvz-b5', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-b1', class extends Altbaşlık {
   constructor() {
     super();
-    // console.log('B5 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b5';
-
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 mt-2"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'b1';
+    this.stil_txt = 'fw-bold stil-b1 mt-4';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-b1';
+    this.başlık_txt = '';
   }
 });
 
-customElements.define('mvz-b6', class extends HTMLElement {
-  static observedAttributes = ['no', 'başlık'];
-
+customElements.define('mvz-b2', class extends Altbaşlık {
   constructor() {
     super();
-    // console.log('B6 ctor');
-  }
-
-  get no() {
-    return this.getAttribute('no');
-  }
-
-  get başlık() {
-    return this.getAttribute('başlık');
-  }
-
-  connectedCallback() {
-    const elem = 'b6';
-
-    this.insertAdjacentHTML('afterbegin',
-                     `<div class="h6 mt-2"><em>${this.no}. ${this.başlık}</em></div>`);
-
-    // if (true)
-    //   return;
-
-    let toctag;
-    let parenttoctag = this.parentElement.getAttribute('toc-tag');
-    if (parenttoctag && this.parentElement.querySelector(`mvz-${elem}`) === this) {
-        // bu node ilk child element, o zaman collapsible bir liste yap
-        toctag = `${parenttoctag}_${elem}-${this.no}`;
-        const e = document.querySelector(`a[data-toc-tag=${parenttoctag}]`);
-        e.setAttribute('href', `#${parenttoctag}`);
-        e.setAttribute('data-bs-toggle', 'collapse');
-        e.setAttribute('aria-expanded', 'false');
-        e.setAttribute('aria-controls', `${parenttoctag}`);
-        e.setAttribute('role', 'button');
-        const litm = this._build_li(toctag);
-        document.querySelector(`a[data-toc-tag=${parenttoctag}]`).insertAdjacentHTML('afterend',
-          `<ul class="list-group list-group-flush collapse" id="${parenttoctag}">${litm}</ul>`);
-    }
-    else {
-      parenttoctag ??= 'toc';
-      // bu ilk child değil, mevcut collapsible listenin sonuna ekle
-      // veya
-      // bu top level bir element (parenttoctag == null), o zaman direkt #toc altına ekle
-      toctag = `${parenttoctag}_${elem}-${this.no}`;
-      const litm = this._build_li(toctag);
-      document.querySelector(`#${parenttoctag}`).insertAdjacentHTML('beforeend', litm);
-    }
-
-    this.setAttribute('toc-tag', toctag);
-  }
-
-  _build_li(toctag) {
-    return `<li class="list-group-item">
-              <a href="javascript:void(0)"
-                class="link-body-emphasis link-offset-2 link-underline-opacity-10 link-underline-opacity-50-hover"
-                data-toc-tag="${toctag}">${this.no}. <span class="hcl2">${this.başlık}</span></a>
-            </li>`;
+    this.elem = 'b2';
+    this.stil_txt = 'stil-b2 mt-3';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-b2';
+    this.başlık_txt = '';
   }
 });
 
+customElements.define('mvz-b3', class extends Altbaşlık {
+  constructor() {
+    super();
+    this.elem = 'b3';
+    this.stil_txt = 'stil-b3 mt-3';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-b3';
+    this.başlık_txt = '';
+  }
+});
+
+customElements.define('mvz-b4', class extends Altbaşlık {
+  constructor() {
+    super();
+    this.elem = 'b4';
+    this.stil_txt = 'stil-b4 mt-3';
+    this.stil_txt2 = '';
+    this.stil_txt3 = 'toc-stil-b4';
+    this.başlık_txt = '';
+  }
+});
+
+customElements.define('mvz-b5', class extends Altbaşlık {
+  constructor() {
+    super();
+    this.elem = 'b5';
+    this.stil_txt = 'mt-2';
+    this.stil_txt2 = '';
+    this.stil_txt3 = '';
+    this.başlık_txt = '';
+  }
+});
+
+customElements.define('mvz-b6', class extends Altbaşlık {
+  constructor() {
+    super();
+    this.elem = 'b6';
+    this.stil_txt = 'mt-2';
+    this.stil_txt2 = '';
+    this.stil_txt3 = '';
+    this.başlık_txt = '';
+  }
+});
 
 customElements.define('mvz-madde', class extends HTMLElement {
   static observedAttributes = ['no', 'başlık', 'tür', 'durum'];
