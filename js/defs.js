@@ -121,6 +121,7 @@ const belgeler = new Map([
   [ 1774, { başlık: 'KİMLİK BİLDİRME KANUNU'} ],
   [ 5393, { başlık: 'BELEDİYE KANUNU'} ],
   [ 3686, { başlık: 'İNSAN HAKLARINI İNCELEME KOMİSYONU KANUNU'} ],
+  [ 1593, { başlık: 'UMUMİ HIFZISSIHHA KANUNU'} ],
   [ 6701, { başlık: 'TÜRKİYE İNSAN HAKLARI VE EŞİTLİK KURUMU KANUNU'} ],
   [ 7595, { başlık: 'MİLLÎ DAYANIŞMA VE TOPLUMSAL BÜTÜNLEŞMENİN GÜÇLENDİRİLMESİNE DAİR KANUN'} ],
   [ 3628, { başlık: 'MAL BİLDİRİMİNDE BULUNULMASI, RÜŞVET VE YOLSUZLUKLARLA MÜCADELE KANUNU'} ],

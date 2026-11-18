@@ -9,7 +9,7 @@ readFile('history.txt', 'utf8', (err, data) => {
     }
 
     // boş satırları sil, satırları ayır, satır başı ve sonu boşlukları sil
-    const lins = data.replace(/^ *\n/gm,'').split(EoL).map(e => e.trim());
+    const lins = data.replace(/^[ \r\t]*\n/gm,'').split(EoL).map(e => e.trim());
 
     let i=0, k=1, sonuç='';
     sonuç = sonuç.concat('  <mvz-geçmişi>').concat(EoL);
